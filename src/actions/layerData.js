@@ -15,9 +15,9 @@ export function addLayerData(layerData) {
     };
 }
 
-export function toggleLayerVisibility(id) {
+export function toggleLayerVisibility(identifier) {
     return {
         type: TOGGLE_LAYER_VISIBILITY,
-        payload: id,
+        payload: identifier,
     };
 }

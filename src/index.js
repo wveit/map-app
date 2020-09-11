@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 
 import App from "./components/App/App";
 import store from "./store";
-import { addLayerData } from "./actions/layerData";
+import { loadLayers } from "./util/layerLoader";
 import "./index.css";
 
 ReactDOM.render(
@@ -20,21 +20,7 @@ ReactDOM.render(
 //
 ////////////////////////////////////////////////////////////////
 
-store.dispatch(
-    addLayerData({
-        id: "waka",
-    })
-);
-
-store.dispatch(
-    addLayerData({
-        id: "banana",
-    })
-);
-
-store.dispatch(
-    addLayerData({
-        id: "ketchup",
-        visible: true,
-    })
+loadLayers(
+    "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml",
+    store
 );

@@ -4,9 +4,9 @@ import { toggleLayerVisibility } from "../../actions/layerData";
 
 function LayerComponent(props) {
     function onClick() {
-        console.log(`clicked ${props.layer.id}`);
+        console.log(`clicked ${props.layer.identifier}`);
         props.toggleLayerVisibility &&
-            props.toggleLayerVisibility(props.layer.id);
+            props.toggleLayerVisibility(props.layer.identifier);
     }
 
     return (
@@ -17,7 +17,7 @@ function LayerComponent(props) {
                 checked={props.layer.visible}
                 onClick={onClick}
             />
-            {props.layer.id}
+            {props.layer.identifier}
         </div>
     );
 }
