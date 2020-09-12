@@ -1,27 +1,40 @@
 import React from "react";
+import { connect } from "react-redux";
 
-import "ol/ol.css";
-import { Map as OlMap, View } from "ol";
-import TileLayer from "ol/layer/Tile";
-import OSM from "ol/source/OSM";
+function Layer(props) {
+    if (!props.layer.visible) return null;
 
-export default class Map extends React.Component {
+    const url = props.layer.url
+        .replace("{Time}", "Default")
+        .replace("{TileMatrixSet}", props.layer.tileMatrixSet.identifier)
+        .replace("{TileMatrix}", 0)
+        .replace("{TileRow}", 0)
+        .replace("{TileCol}", 0);
+
+    return (
+        <div className={`Layer layer-${props.layer.identifier}`}>
+            <img src={url} alt="" />
+        </div>
+    );
+}
+
+class Map extends React.Component {
     render() {
-        return <div id="map"></div>;
-    }
-
-    componentDidMount() {
-        const olmap = new OlMap({
-            target: "map",
-            layers: [
-                new TileLayer({
-                    source: new OSM(),
-                }),
-            ],
-            view: new View({
-                center: [0, 0],
-                zoom: 0,
-            }),
-        });
+        const layerComponents = this.props.layers.map((layer) => (
+            <Layer layer={layer} />
+        ));
+        return (
+            <div id="Map">
+                <div id="Map__world">{layerComponents}</div>
+            </div>
+        );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        layers: state.layerData,
+    };
+}
+
+export default connect(mapStateToProps)(Map);

@@ -4,12 +4,18 @@
     box-sizing: border-box;
 }
 
-#map {
+#Map {
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: gray;
     z-index: -1;
+}
+
+#Map__world {
+    position: absolute;
+    left: 600px;
+    /* transform: translate(600, 0); */
 }
 
 #Menu {
@@ -24,4 +30,8 @@
 
 .LayerComponent {
     border: 1px solid black;
+}
+
+.Layer {
+    position: absolute;
 }
