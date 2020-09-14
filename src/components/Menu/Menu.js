@@ -35,7 +35,7 @@ function Menu(props) {
 
     return (
         <div id="Menu">
-            Menu
+            <div className="Menu__title">Menu</div>
             {layerDataComponents}
         </div>
     );
