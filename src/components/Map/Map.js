@@ -39,6 +39,7 @@ class MyMap extends React.Component {
         this.map = window.map = new Map({
             target: "Map",
             layers: [],
+            controls: [],
             view: new View({
                 projection: getProjection("EPSG:4326"),
                 center: [0, 0],
