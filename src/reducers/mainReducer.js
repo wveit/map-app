@@ -1,10 +1,6 @@
 import { combineReducers } from "redux";
 import { ADD_LAYER_DATA, TOGGLE_LAYER_VISIBILITY } from "../actions/layerData";
-import {
-    CHANGE_MAP_YEAR,
-    CHANGE_MAP_MONTH,
-    CHANGE_MAP_DATE,
-} from "../actions/dates";
+import { CHANGE_MAP_DATE } from "../actions/dates";
 
 function layerData(state = [], action) {
     switch (action.type) {
@@ -26,29 +22,9 @@ function layerData(state = [], action) {
 
 function dates(state = { mapDate: new Date(2020, 0, 1) }, action) {
     switch (action.type) {
-        case CHANGE_MAP_YEAR:
-            return {
-                mapDate: new Date(
-                    action.payload,
-                    state.mapDate.getMonth(),
-                    state.mapDate.getDate()
-                ),
-            };
-        case CHANGE_MAP_MONTH:
-            return {
-                mapDate: new Date(
-                    state.mapDate.getFullYear(),
-                    action.payload - 1,
-                    state.mapDate.getDate()
-                ),
-            };
         case CHANGE_MAP_DATE:
             return {
-                mapDate: new Date(
-                    state.mapDate.getFullYear(),
-                    state.mapDate.getMonth(),
-                    action.payload
-                ),
+                mapDate: action.payload,
             };
         default:
             return state;
