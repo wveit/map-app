@@ -14,7 +14,6 @@ export async function loadLayers(url, store) {
     const httpResponse = await fetch(url);
     const xmlText = await httpResponse.text();
     const capabilitiesObject = parseWMTSCapabilities(xmlText);
-    console.log("capabilities object: ", capabilitiesObject);
 
     configuredLayers.forEach(function (layerName) {
         const layerObj = capabilitiesObject.layers[layerName];

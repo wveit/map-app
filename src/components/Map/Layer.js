@@ -15,10 +15,14 @@ class Layer extends React.Component {
     }
 
     componentDidMount() {
-        console.log("mounted layer: " + this.props.layer.identifier);
+        const mapDate = this.props.mapDate;
+        let time = null;
+        if (mapDate) {
+            time = dateFormat(mapDate);
+        }
 
         this.source = new OlSource({
-            url: this.props.layer.url.replace("{Time}", "default"),
+            url: this.props.layer.url.replace("{Time}", time || "default"),
             requestEncoding: "REST",
             layer: this.props.layer.identifier,
             format: "image/jpeg",
@@ -51,14 +55,33 @@ class Layer extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log("updated layer: " + this.props.layer.identifier);
         this.layer.setVisible(this.props.layer.visible);
+
+        const mapDate = this.props.mapDate;
+        let time = null;
+        if (mapDate) time = dateFormat(mapDate);
+        this.layer
+            .getSource()
+            .setUrl(this.props.layer.url.replace("{Time}", time || "default"));
     }
 
     componentWillUnmount() {
-        console.log("unmounted layer: " + this.props.layer.identifier);
         this.props.map.removeLayer(this.layer);
     }
 }
 
 export default Layer;
+
+function dateFormat(date) {
+    if (!date) return null;
+
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let dayOfMonth = date.getDate();
+
+    if (month < 10) month = "0" + month;
+
+    if (dayOfMonth < 10) dayOfMonth = "0" + dayOfMonth;
+
+    return `${year}-${month}-${dayOfMonth}`;
+}

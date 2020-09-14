@@ -17,7 +17,7 @@ class MyMap extends React.Component {
     }
 
     render() {
-        const { date } = this.props;
+        const { mapDate } = this.props;
         const map = this.map;
         if (!this.state.mapIsLoaded) {
             return null;
@@ -27,7 +27,7 @@ class MyMap extends React.Component {
                 <Layer
                     map={map}
                     layer={layer}
-                    date={date}
+                    mapDate={mapDate}
                     key={layer.identifier}
                 />
             );
@@ -47,12 +47,9 @@ class MyMap extends React.Component {
             }),
         });
         this.setState({ mapIsLoaded: true });
-        console.log("Map mounted");
     }
 
-    componentDidUpdate() {
-        console.log("Map updated", this.props.layers);
-    }
+    componentDidUpdate() {}
 
     componentWillUnmount() {}
 }
@@ -60,6 +57,7 @@ class MyMap extends React.Component {
 function mapStateToProps(state) {
     return {
         layers: state.layerData,
+        mapDate: state.dates.mapDate,
     };
 }
 
