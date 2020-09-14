@@ -1,10 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-    changeMapYear,
-    changeMapMonth,
-    changeMapDate,
-} from "../../actions/dates";
+import { changeMapDate } from "../../actions/dates";
 import "./DatePicker.css";
 
 function DatePicker(props) {
@@ -69,7 +65,7 @@ function DatePicker(props) {
                 >
                     &#708;
                 </button>
-                <input type="text" value={props.date.getFullYear()} />
+                <input type="text" value={props.date.getFullYear()} readOnly />
                 <button
                     data-direction="down"
                     data-unit="year"
@@ -92,6 +88,7 @@ function DatePicker(props) {
                     value={props.date.toLocaleString("default", {
                         month: "short",
                     })}
+                    readOnly
                 />
                 <button
                     data-direction="down"
@@ -110,7 +107,7 @@ function DatePicker(props) {
                 >
                     &#708;
                 </button>
-                <input type="text" value={props.date.getDate()} />
+                <input type="text" value={props.date.getDate()} readOnly />
                 <button
                     data-direction="down"
                     data-unit="date"
