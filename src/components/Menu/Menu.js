@@ -49,7 +49,7 @@ function Menu(props) {
 
     return (
         <div id="Menu">
-            <div className="Menu__title">Menu</div>
+            <div className="Menu__title">State of the Ocean</div>
             {layerDataComponents}
         </div>
     );
