@@ -22,14 +22,14 @@
     border: 2px solid black;
 }
 
-.Menu__title {
-    background-color: rgb(90, 90, 182);
-    color: white;
+#Menu > * {
+    padding: 5px;
     border-bottom: 1px solid black;
 }
 
-.LayerComponent {
-    border-bottom: 1px solid black;
+.Menu__title {
+    background-color: rgb(90, 90, 182);
+    color: white;
 }
 
 #DatePicker {
@@ -38,4 +38,16 @@
     bottom: 10px;
     background-color: darkslategray;
     color: white;
+}
+
+.LayerComponent {
+    display: flex;
+}
+
+.LayerComponent > * {
+    margin-left: 5px;
+}
+
+.LayerComponent input[type="range"] {
+    width: 50px;
 }

@@ -1,5 +1,9 @@
 import { combineReducers } from "redux";
-import { ADD_LAYER_DATA, TOGGLE_LAYER_VISIBILITY } from "../actions/layerData";
+import {
+    ADD_LAYER_DATA,
+    TOGGLE_LAYER_VISIBILITY,
+    ADJUST_LAYER_OPACITY,
+} from "../actions/layerData";
 import { CHANGE_MAP_DATE } from "../actions/dates";
 
 function layerData(state = [], action) {
@@ -14,6 +18,17 @@ function layerData(state = [], action) {
                         ...layer,
                         visible: !layer.visible,
                     };
+            });
+        case ADJUST_LAYER_OPACITY:
+            return state.map(function (layer) {
+                if (layer.identifier === action.payload.identifier) {
+                    return {
+                        ...layer,
+                        opacity: action.payload.opacity,
+                    };
+                } else {
+                    return layer;
+                }
             });
         default:
             return state;

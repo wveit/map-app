@@ -49,6 +49,7 @@ class Layer extends React.Component {
             source: this.source,
             extent: [-180, -90, 180, 90],
             visible: this.props.layer.visible,
+            opacity: Number(this.props.layer.opacity) / 100,
         });
 
         this.props.map.addLayer(this.layer);
@@ -56,6 +57,7 @@ class Layer extends React.Component {
 
     componentDidUpdate() {
         this.layer.setVisible(this.props.layer.visible);
+        this.layer.setOpacity(Number(this.props.layer.opacity) / 100);
 
         const mapDate = this.props.mapDate;
         let time = null;
