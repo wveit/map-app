@@ -44,6 +44,7 @@ class Layer extends React.Component {
         this.layer = new OlLayer({
             source: this.source,
             extent: [-180, -90, 180, 90],
+            visible: this.props.layer.visible,
         });
 
         this.props.map.addLayer(this.layer);
@@ -51,6 +52,7 @@ class Layer extends React.Component {
 
     componentDidUpdate() {
         console.log("updated layer: " + this.props.layer.identifier);
+        this.layer.setVisible(this.props.layer.visible);
     }
 
     componentWillUnmount() {
