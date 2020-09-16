@@ -8,6 +8,7 @@ const configuredLayers = [
     { identifier: "GHRSST_L4_MUR_Sea_Surface_Temperature", visible: true },
     { identifier: "Aquarius_Sea_Surface_Salinity_L3_7Day_RunningMean" },
     { identifier: "AIRS_L2_Surface_Air_Temperature_Day" },
+    { identifier: "SMAP_L3_Sea_Surface_Salinity_CAP_8Day_RunningMean" },
 ];
 
 export async function loadLayers(url, store) {
