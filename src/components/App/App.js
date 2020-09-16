@@ -3,6 +3,7 @@ import React from "react";
 import Map from "../Map/Map";
 import Menu from "../Menu/Menu";
 import DatePicker from "../DatePicker/DatePicker";
+import Coordinates from "../Coordinates/Coordinates";
 
 export default function (props) {
     return (
@@ -10,6 +11,7 @@ export default function (props) {
             <Map />
             <Menu />
             <DatePicker />
+            <Coordinates />
         </div>
     );
 }

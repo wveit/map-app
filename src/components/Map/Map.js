@@ -6,6 +6,7 @@ import { Map, View } from "ol";
 import { get as getProjection } from "ol/proj";
 
 import Layer from "./Layer";
+import { updateMouseCoordinates } from "../../actions/coordinates";
 
 class MyMap extends React.Component {
     constructor(props) {
@@ -48,6 +49,16 @@ class MyMap extends React.Component {
             }),
         });
         this.setState({ mapIsLoaded: true });
+
+        let map = this.map;
+        let onCoordinateChange = this.props.onCoordinateChange;
+        this.map.on("pointermove", function (event) {
+            const newCoordinate = map.getEventCoordinate(event.originalEvent);
+            if (onCoordinateChange) {
+                onCoordinateChange(newCoordinate);
+            }
+            console.log(newCoordinate);
+        });
     }
 
     componentDidUpdate() {}
@@ -62,4 +73,8 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(MyMap);
+const mapDispatchToProps = {
+    onCoordinateChange: updateMouseCoordinates,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyMap);
