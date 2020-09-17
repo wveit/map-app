@@ -26,12 +26,11 @@ class Layer extends React.Component {
             requestEncoding: "REST",
             layer: this.props.layer.identifier,
             format: "image/jpeg",
+            wrapX: true,
             matrixSet: this.props.layer.tileMatrixSet.identifier,
             tileGrid: new OlTilegrid({
                 origin: [-180, 90],
                 resolutions: [
-                    0.5625,
-                    0.28125,
                     0.140625,
                     0.0703125,
                     0.03515625,
@@ -40,14 +39,14 @@ class Layer extends React.Component {
                     0.00439453125,
                     0.002197265625,
                 ],
-                matrixIds: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                matrixIds: [2, 3, 4, 5, 6, 7, 8],
                 tileSize: 512,
             }),
         });
 
         this.layer = new OlLayer({
             source: this.source,
-            extent: [-180, -90, 180, 90],
+            extent: this.props.extent,
             visible: this.props.layer.visible,
             opacity: Number(this.props.layer.opacity) / 100,
         });

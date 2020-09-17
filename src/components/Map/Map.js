@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import "ol/ol.css";
 import { Map, View } from "ol";
-import { get as getProjection } from "ol/proj";
 
 import Layer from "./Layer";
 import { updateMouseCoordinates } from "../../actions/coordinates";
+
+const LAYER_EXTENT = [-360, -90, 360, 90];
 
 class MyMap extends React.Component {
     constructor(props) {
@@ -29,6 +29,7 @@ class MyMap extends React.Component {
                     map={map}
                     layer={layer}
                     mapDate={mapDate}
+                    extent={LAYER_EXTENT}
                     key={layer.identifier}
                 />
             );
@@ -42,23 +43,30 @@ class MyMap extends React.Component {
             layers: [],
             controls: [],
             view: new View({
-                projection: getProjection("EPSG:4326"),
+                projection: "EPSG:4326",
                 center: [0, 0],
-                zoom: 0,
-                extent: [-500, -200, 500, 200],
+                zoom: 3,
+                extent: [-1000, -400, 1000, 400],
             }),
         });
         this.setState({ mapIsLoaded: true });
 
         let map = this.map;
+        const mapElement = document.getElementById("Map");
         let onCoordinateChange = this.props.onCoordinateChange;
-        this.map.on("pointermove", function (event) {
-            const newCoordinate = map.getEventCoordinate(event.originalEvent);
-            if (onCoordinateChange) {
-                onCoordinateChange(newCoordinate);
+        mapElement.onmousemove = function (event) {
+            let coords = map.getCoordinateFromPixel([event.x, event.y]);
+            if (pointIsInsideBox(coords, LAYER_EXTENT)) {
+                while (coords[0] < -180) coords[0] += 360;
+                while (coords[0] > 180) coords[0] -= 360;
+            } else {
+                coords = null;
             }
-            console.log(newCoordinate);
-        });
+            onCoordinateChange(coords);
+        };
+        mapElement.onmouseout = function (event) {
+            onCoordinateChange(null);
+        };
     }
 
     componentDidUpdate() {}
@@ -78,3 +86,17 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyMap);
+
+//////////////////////////////////////////////////////////////////////////
+//
+//      Helpers
+//
+//////////////////////////////////////////////////////////////////////////
+function pointIsInsideBox(point, box) {
+    return (
+        point[0] > box[0] &&
+        point[0] < box[2] &&
+        point[1] > box[1] &&
+        point[1] < box[3]
+    );
+}

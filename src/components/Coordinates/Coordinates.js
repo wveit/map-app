@@ -9,10 +9,7 @@ function Coordinates(props) {
             2
         )}, ${props.mouseCoordinates[1].toFixed(2)}`;
     }
-    // const coordinateString = props.mouseCoordinates
-    //     ? props.mouseCoordinates.toString()
-    //     : "--";
-    return <div class="Coordinates">{coordinateString}</div>;
+    return <div className="Coordinates">{coordinateString}</div>;
 }
 
 function mapStateToProps(state) {
