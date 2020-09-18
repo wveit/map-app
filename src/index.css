@@ -39,14 +39,6 @@
     display: none;
 }
 
-#DatePicker {
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
-    background-color: darkslategray;
-    color: white;
-}
-
 .LayerComponent {
     display: flex;
     padding: 5px;

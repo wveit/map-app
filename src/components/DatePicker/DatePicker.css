@@ -1,17 +1,46 @@
-#DatePicker {
+.DatePicker {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(63, 63, 63);
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    height: 50px;
 }
 
-#DatePicker > div {
+.DatePicker > div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    padding: 10px;
+    padding: 5px;
 }
 
-#DatePicker input {
-    width: 50px;
+.DatePicker > div > div {
+    cursor: pointer;
+    height: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.DatePicker > div > div:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.DatePicker input {
+    width: 100%;
     text-align: center;
     margin: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: white;
+    font-size: 1em;
 }

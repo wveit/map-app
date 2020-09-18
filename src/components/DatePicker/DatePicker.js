@@ -4,85 +4,58 @@ import { changeMapDate } from "../../actions/dates";
 import "./DatePicker.css";
 
 function DatePicker(props) {
-    function handleButtonClick(event) {
-        const direction = event.target.dataset.direction;
-        const unit = event.target.dataset.unit;
-        let newDate;
-        if (unit === "year") {
-            if (direction === "up") {
-                newDate = new Date(
-                    props.date.getFullYear() + 1,
-                    props.date.getMonth(),
-                    props.date.getDate()
-                );
-            } else {
-                newDate = new Date(
-                    props.date.getFullYear() - 1,
-                    props.date.getMonth(),
-                    props.date.getDate()
-                );
-            }
-        } else if (unit === "month") {
-            if (direction === "up") {
-                newDate = new Date(
-                    props.date.getFullYear(),
-                    props.date.getMonth() + 1,
-                    props.date.getDate()
-                );
-            } else {
-                newDate = new Date(
-                    props.date.getFullYear(),
-                    props.date.getMonth() - 1,
-                    props.date.getDate()
-                );
-            }
-        } else if (unit === "date") {
-            if (direction === "up") {
-                newDate = new Date(
-                    props.date.getFullYear(),
-                    props.date.getMonth(),
-                    props.date.getDate() + 1
-                );
-            } else {
-                newDate = new Date(
-                    props.date.getFullYear(),
-                    props.date.getMonth(),
-                    props.date.getDate() - 1
-                );
-            }
-        }
+    const newDate = new Date(props.date);
 
-        props.changeMapDate(newDate);
+    function incrementYear() {
+        newDate.setFullYear(newDate.getFullYear() + 1);
+        handleNewDate(newDate);
+    }
+
+    function decrementYear() {
+        newDate.setFullYear(newDate.getFullYear() - 1);
+        handleNewDate(newDate);
+    }
+
+    function incrementMonth() {
+        newDate.setMonth(newDate.getMonth() + 1);
+        handleNewDate(newDate);
+    }
+
+    function decrementMonth() {
+        newDate.setMonth(newDate.getMonth() - 1);
+        handleNewDate(newDate);
+    }
+
+    function incrementDate() {
+        newDate.setDate(newDate.getDate() + 1);
+        handleNewDate(newDate);
+    }
+
+    function decrementDate() {
+        newDate.setDate(newDate.getDate() - 1);
+        handleNewDate(newDate);
+    }
+
+    function handleNewDate(newDate) {
+        props.changeMapDate && props.changeMapDate(newDate);
     }
 
     return (
-        <div id="DatePicker">
+        <div className="DatePicker">
             <div className="DatePicker__year">
-                <button
-                    data-direction="up"
-                    data-unit="year"
-                    onClick={handleButtonClick}
-                >
-                    &#708;
-                </button>
+                <div className="material-icons" onClick={incrementYear}>
+                    arrow_drop_up
+                </div>
                 <input type="text" value={props.date.getFullYear()} readOnly />
-                <button
-                    data-direction="down"
-                    data-unit="year"
-                    onClick={handleButtonClick}
-                >
-                    &#709;
-                </button>
+                <div className="material-icons" onClick={decrementYear}>
+                    arrow_drop_down
+                </div>
             </div>
 
             <div className="DatePicker__month">
-                <button
-                    data-direction="up"
-                    data-unit="month"
-                    onClick={handleButtonClick}
-                >
-                    &#708;
-                </button>
+                <div className="material-icons" onClick={incrementMonth}>
+                    arrow_drop_up
+                </div>
                 <input
                     type="text"
                     value={props.date.toLocaleString("default", {
@@ -90,31 +63,19 @@ function DatePicker(props) {
                     })}
                     readOnly
                 />
-                <button
-                    data-direction="down"
-                    data-unit="month"
-                    onClick={handleButtonClick}
-                >
-                    &#709;
-                </button>
+                <div className="material-icons" onClick={decrementMonth}>
+                    arrow_drop_down
+                </div>
             </div>
 
             <div className="DatePicker__date">
-                <button
-                    data-direction="up"
-                    data-unit="date"
-                    onClick={handleButtonClick}
-                >
-                    &#708;
-                </button>
+                <div className="material-icons" onClick={incrementDate}>
+                    arrow_drop_up
+                </div>
                 <input type="text" value={props.date.getDate()} readOnly />
-                <button
-                    data-direction="down"
-                    data-unit="date"
-                    onClick={handleButtonClick}
-                >
-                    &#709;
-                </button>
+                <div className="material-icons" onClick={decrementDate}>
+                    arrow_drop_down
+                </div>
             </div>
         </div>
     );
