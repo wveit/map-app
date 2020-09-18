@@ -1,0 +1,13 @@
+.LayerControl {
+    display: flex;
+    padding: 5px;
+    border-bottom: 1px solid black;
+}
+
+.LayerControl > * {
+    margin-left: 5px;
+}
+
+.LayerControl input[type="range"] {
+    width: 50px;
+}

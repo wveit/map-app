@@ -4,36 +4,8 @@ import {
     toggleLayerVisibility,
     adjustLayerOpacity,
 } from "../../actions/layerData";
-
-function LayerComponent(props) {
-    function onClick() {
-        props.toggleLayerVisibility &&
-            props.toggleLayerVisibility(props.layer.identifier);
-    }
-
-    function onOpacityChange(event) {
-        props.adjustLayerOpacity(props.layer.identifier, event.target.value);
-    }
-
-    return (
-        <div className="LayerComponent">
-            <input
-                type="checkbox"
-                readOnly
-                checked={props.layer.visible}
-                onClick={onClick}
-            />
-            <input
-                type="range"
-                min="0"
-                max="100"
-                onChange={onOpacityChange}
-                value={props.layer.opacity}
-            />
-            <span>{props.layer.identifier}</span>
-        </div>
-    );
-}
+import LayerControl from "./LayerControl";
+import "./Menu.css";
 
 class Menu extends React.Component {
     constructor() {
@@ -57,7 +29,7 @@ class Menu extends React.Component {
             index
         ) {
             return (
-                <LayerComponent
+                <LayerControl
                     layer={layer}
                     key={index}
                     toggleLayerVisibility={props.toggleLayerVisibility}
