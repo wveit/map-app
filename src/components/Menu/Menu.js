@@ -6,6 +6,7 @@ import {
 } from "../../actions/layerData";
 import LayerControl from "./LayerControl";
 import "./Menu.css";
+import podaacLogo from "./podaac_logo.svg";
 
 class Menu extends React.Component {
     constructor() {
@@ -38,20 +39,39 @@ class Menu extends React.Component {
             );
         });
 
-        const collapseButtonSymbol = this.state.collapsed ? (
-            <span>&gt;</span>
-        ) : (
-            <span>&lt;</span>
-        );
+        const collapseButtonSymbol = this.state.collapsed
+            ? "chevron_right"
+            : "chevron_left";
 
         return (
             <div id="Menu" className={this.state.collapsed ? "collapsed" : ""}>
                 <div className="Menu__titlebar">
-                    <div className="Menu__title">State of the Ocean</div>
+                    <div className="Menu__title">
+                        <a
+                            href="https://podaac.jpl.nasa.gov"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img src={podaacLogo} alt="PODAAC logo" />
+                        </a>
+                        <h1>
+                            State of the Ocean <span>4.5</span>
+                        </h1>
+                    </div>
                     <div className="Menu__controls">
-                        <button onClick={this.handleCollapseClick}>
+                        <div className="Menu__control material-icons">help</div>
+                        <div className="Menu__control material-icons">
+                            share
+                        </div>
+                        <div className="Menu__control material-icons">
+                            settings
+                        </div>
+                        <div
+                            className="Menu__control material-icons"
+                            onClick={this.handleCollapseClick}
+                        >
                             {collapseButtonSymbol}
-                        </button>
+                        </div>
                     </div>
                 </div>
                 <div className="Menu__content">{layerDataComponents}</div>
