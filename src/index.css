@@ -11,3 +11,25 @@
     background-color: rgb(200, 200, 200);
     z-index: -1;
 }
+
+.left {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.right {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.left-right-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invisible {
+    display: none;
+}

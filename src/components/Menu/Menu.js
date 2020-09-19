@@ -4,7 +4,7 @@ import {
     toggleLayerVisibility,
     adjustLayerOpacity,
 } from "../../actions/layerData";
-import LayerControl from "./LayerControl";
+import LayerControl from "../LayerControl/LayerControl";
 import "./Menu.css";
 import podaacLogo from "./podaac_logo.svg";
 
