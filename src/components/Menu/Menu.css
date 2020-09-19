@@ -45,11 +45,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: white;
 }
 
-.Menu__control {
-    cursor: pointer;
-    padding: 5px;
+.Menu__controls * {
+    color: white;
     font-size: 1.2rem;
 }
 

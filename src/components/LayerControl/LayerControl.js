@@ -1,5 +1,6 @@
 import React from "react";
 import Switch from "@material-ui/core/Switch";
+import IconButton from "../Button/IconButton";
 import "./LayerControl.css";
 import Colorbar from "../Colorbar/Colorbar";
 
@@ -35,7 +36,7 @@ export default function LayerControl(props) {
                     </div>
                 </div>
                 <div className={`right ${closeButtonInvisible}`}>
-                    <div className="material-icons">close</div>
+                    <IconButton>close</IconButton>
                 </div>
             </div>
         );
@@ -57,11 +58,11 @@ export default function LayerControl(props) {
                     value={props.layer.opacity}
                 /> */}
                 <div className="right">
-                    <div className="material-icons">more_vert</div>
-                    <div className="material-icons">layers</div>
-                    <div className="material-icons">opacity</div>
-                    <div className="material-icons">info_outline</div>
-                    <div className="material-icons">close</div>
+                    <IconButton>more_vert</IconButton>
+                    <IconButton>layers</IconButton>
+                    <IconButton>opacity</IconButton>
+                    <IconButton>info_outline</IconButton>
+                    <IconButton>close</IconButton>
                 </div>
             </div>
         );
