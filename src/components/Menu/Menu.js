@@ -8,6 +8,7 @@ import LayerControl from "../LayerControl/LayerControl";
 import "./Menu.css";
 import podaacLogo from "./podaac_logo.svg";
 import IconButton from "../Button/IconButton";
+import SelectedDatasetsButtonPanel from "../SelectedDatasetsButtonPanel/SelectedDatasetsButtonPanel";
 
 class Menu extends React.Component {
     constructor() {
@@ -66,21 +67,9 @@ class Menu extends React.Component {
                         <IconButton onClick={this.handleCollapseClick}>
                             {collapseButtonSymbol}
                         </IconButton>
-                        {/* <div className="Menu__control material-icons">help</div>
-                        <div className="Menu__control material-icons">
-                            share
-                        </div>
-                        <div className="Menu__control material-icons">
-                            settings
-                        </div>
-                        <div
-                            className="Menu__control material-icons"
-                            
-                        >
-                            {collapseButtonSymbol}
-                        </div> */}
                     </div>
                 </div>
+                <SelectedDatasetsButtonPanel />
                 <div className="Menu__content">{layerDataComponents}</div>
             </div>
         );
