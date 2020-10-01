@@ -4,6 +4,7 @@ import "./SelectedDatasetsButtonPanel.css";
 export default function (props) {
     function handleClick() {
         console.log("ADD LAYERS");
+        props.onAddDatasetClick && props.onAddDatasetClick();
     }
 
     return (

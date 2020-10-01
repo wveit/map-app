@@ -19,6 +19,17 @@ class Menu extends React.Component {
         };
         this.handleCollapseClick = this.handleCollapseClick.bind(this);
         this.handleSettingsClick = this.handleSettingsClick.bind(this);
+        this.handleShareClick = this.handleShareClick.bind(this);
+        this.handleHelpClick = this.handleHelpClick.bind(this);
+        this.handleAddDatasetClick = this.handleAddDatasetClick.bind(this);
+    }
+
+    handleHelpClick() {
+        this.props.openModal("HELP");
+    }
+
+    handleShareClick() {
+        this.props.openModal("SHARE");
     }
 
     handleSettingsClick() {
@@ -29,6 +40,10 @@ class Menu extends React.Component {
         this.setState(function (state) {
             return { collapsed: !state.collapsed };
         });
+    }
+
+    handleAddDatasetClick() {
+        this.props.openModal("ADD_DATASET");
     }
 
     render() {
@@ -67,8 +82,12 @@ class Menu extends React.Component {
                         </h1>
                     </div>
                     <div className="Menu__controls">
-                        <IconButton>help</IconButton>
-                        <IconButton>share</IconButton>
+                        <IconButton onClick={this.handleHelpClick}>
+                            help
+                        </IconButton>
+                        <IconButton onClick={this.handleShareClick}>
+                            share
+                        </IconButton>
                         <IconButton onClick={this.handleSettingsClick}>
                             settings
                         </IconButton>
@@ -77,7 +96,9 @@ class Menu extends React.Component {
                         </IconButton>
                     </div>
                 </div>
-                <SelectedDatasetsButtonPanel />
+                <SelectedDatasetsButtonPanel
+                    onAddDatasetClick={this.handleAddDatasetClick}
+                />
                 <div className="Menu__content">{layerDataComponents}</div>
             </div>
         );
