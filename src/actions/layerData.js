@@ -17,18 +17,18 @@ export function addLayerData(layerData) {
     };
 }
 
-export function toggleLayerVisibility(identifier) {
+export function toggleLayerVisibility(id) {
     return {
         type: TOGGLE_LAYER_VISIBILITY,
-        payload: identifier,
+        payload: id,
     };
 }
 
-export function adjustLayerOpacity(identifier, opacity) {
+export function adjustLayerOpacity(id, opacity) {
     return {
         type: ADJUST_LAYER_OPACITY,
         payload: {
-            identifier,
+            id,
             opacity,
         },
     };

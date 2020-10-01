@@ -20,7 +20,4 @@ ReactDOM.render(
 //
 ////////////////////////////////////////////////////////////////
 
-loadLayers(
-    "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml",
-    store
-);
+loadLayers(store);

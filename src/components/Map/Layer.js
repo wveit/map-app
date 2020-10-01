@@ -21,13 +21,15 @@ class Layer extends React.Component {
             time = dateFormat(mapDate);
         }
 
+        const { data } = this.props.layer.imagery;
+
         this.source = new OlSource({
-            url: this.props.layer.url.replace("{Time}", time || "default"),
+            url: data.url.replace("{Time}", time || "default"),
             requestEncoding: "REST",
-            layer: this.props.layer.identifier,
+            layer: data.identifier,
             format: "image/jpeg",
             wrapX: true,
-            matrixSet: this.props.layer.tileMatrixSet.identifier,
+            matrixSet: data.tileMatrixSet.identifier,
             tileGrid: new OlTilegrid({
                 origin: [-180, 90],
                 resolutions: [
@@ -55,6 +57,8 @@ class Layer extends React.Component {
     }
 
     componentDidUpdate() {
+        const { data } = this.props.layer.imagery;
+
         this.layer.setVisible(this.props.layer.visible);
         this.layer.setOpacity(Number(this.props.layer.opacity) / 100);
 
@@ -63,7 +67,7 @@ class Layer extends React.Component {
         if (mapDate) time = dateFormat(mapDate);
         this.layer
             .getSource()
-            .setUrl(this.props.layer.url.replace("{Time}", time || "default"));
+            .setUrl(data.url.replace("{Time}", time || "default"));
     }
 
     componentWillUnmount() {

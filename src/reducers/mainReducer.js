@@ -13,7 +13,7 @@ function layerData(state = [], action) {
             return state.concat([action.payload]);
         case TOGGLE_LAYER_VISIBILITY:
             return state.map(function (layer) {
-                if (layer.identifier !== action.payload) return layer;
+                if (layer.id !== action.payload) return layer;
                 else
                     return {
                         ...layer,
@@ -22,7 +22,7 @@ function layerData(state = [], action) {
             });
         case ADJUST_LAYER_OPACITY:
             return state.map(function (layer) {
-                if (layer.identifier === action.payload.identifier) {
+                if (layer.id === action.payload.id) {
                     return {
                         ...layer,
                         opacity: action.payload.opacity,

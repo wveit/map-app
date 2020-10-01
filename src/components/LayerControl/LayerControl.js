@@ -22,7 +22,7 @@ function LayerControlTop(props) {
 
     function handleVisibilityToggle() {
         props.toggleLayerVisibility &&
-            props.toggleLayerVisibility(props.layer.identifier);
+            props.toggleLayerVisibility(props.layer.id);
     }
 
     return (
@@ -37,9 +37,11 @@ function LayerControlTop(props) {
                 />
                 <div>
                     <div className="LayerControl__title">
-                        {props.layer.identifier}
+                        {props.layer.title}
                     </div>
-                    <div className="LayerControl__subtitle">Layer Subtitle</div>
+                    <div className="LayerControl__subtitle">
+                        {props.layer.subtitle}
+                    </div>
                 </div>
             </div>
             <div className={`right`}>{closeButton}</div>
@@ -72,7 +74,7 @@ function OpacityControl(props) {
     let [open, setOpen] = React.useState(false);
 
     function handleOpacityChange(event) {
-        props.adjustLayerOpacity(props.layer.identifier, event.target.value);
+        props.adjustLayerOpacity(props.layer.id, event.target.value);
     }
 
     function handleClick() {

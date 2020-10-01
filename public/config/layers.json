@@ -1,0 +1,77 @@
+{
+    "layers": [
+        {
+            "id": "BlueMarble_ShadedRelief",
+            "title": "Blue Marble Shaded Relief",
+            "visible": true,
+            "isBasemap": true,
+            "imagery": {
+                "type": "GIBS_WMTS",
+                "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"
+            }
+        },
+        {
+            "id": "MODIS_Terra_L3_SST_Thermal_4km_Day_Daily",
+            "title": "Sea Surface Temperature (L3, 4km, Daily, Day)",
+            "subtitle": "Terra/MODIS",
+            "imagery": {
+                "type": "GIBS_WMTS",
+                "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"
+            }
+        },
+        {
+            "id": "MODIS_Terra_L3_SST_Thermal_4km_Night_Daily",
+            "title": "Sea Surface Temperature (L3, 4km, Daily, Night)",
+            "subtitle": "Terra/MODIS",
+            "imagery": {
+                "type": "GIBS_WMTS",
+                "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"
+            }
+        },
+        {
+            "id": "GHRSST_L4_MUR_Sea_Surface_Temperature",
+            "title": "Sea Surface Temperature (L4, 1km, Daily)",
+            "subtitle": "GHRSST MEaSUREs MUR/PO.DAAC",
+            "imagery": {
+                "type": "GIBS_WMTS",
+                "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"
+            }
+        },
+        {
+            "id": "GHRSST_L4_MUR_Sea_Surface_Temperature_Anomalies",
+            "title": "Sea Surface Temperature Anomaly (L4, 1km, Daily)",
+            "subtitle": "GHRSST MEaSUREs MUR/PO.DAAC",
+            "imagery": {
+                "type": "GIBS_WMTS",
+                "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"
+            }
+        },
+        {
+            "id": "AIRS_L2_Surface_Air_Temperature_Day",
+            "title": "Surface Air Temperature",
+            "subtitle": "AIRS",
+            "imagery": {
+                "type": "GIBS_WMTS",
+                "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"
+            }
+        },
+        {
+            "id": "JPL_MEaSUREs_L4_Sea_Surface_Height_Anomalies",
+            "title": "Sea Surface Height Anomaly (L3, 19km, 5-Day)",
+            "subtitle": "MEaSUREs/JPL",
+            "imagery": {
+                "type": "GIBS_WMTS",
+                "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"
+            }
+        },
+        {
+            "id": "MODIS_Aqua_Chlorophyll_A",
+            "title": "Ocean Color - Chlorophyll-A (L2, 1km, Daily)",
+            "subtitle": "Aqua/MODIS",
+            "imagery": {
+                "type": "GIBS_WMTS",
+                "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"
+            }
+        }
+    ]
+}

@@ -30,7 +30,7 @@ class MyMap extends React.Component {
                     layer={layer}
                     mapDate={mapDate}
                     extent={LAYER_EXTENT}
-                    key={layer.identifier}
+                    key={layer.id}
                 />
             );
         });
