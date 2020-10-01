@@ -4,6 +4,7 @@ import {
     toggleLayerVisibility,
     adjustLayerOpacity,
 } from "../../actions/layerData";
+import { openModal } from "../../actions/modals";
 import LayerControl from "../LayerControl/LayerControl";
 import "./Menu.css";
 import podaacLogo from "./podaac_logo.svg";
@@ -17,6 +18,11 @@ class Menu extends React.Component {
             collapsed: false,
         };
         this.handleCollapseClick = this.handleCollapseClick.bind(this);
+        this.handleSettingsClick = this.handleSettingsClick.bind(this);
+    }
+
+    handleSettingsClick() {
+        this.props.openModal("SETTINGS");
     }
 
     handleCollapseClick() {
@@ -63,7 +69,9 @@ class Menu extends React.Component {
                     <div className="Menu__controls">
                         <IconButton>help</IconButton>
                         <IconButton>share</IconButton>
-                        <IconButton>settings</IconButton>
+                        <IconButton onClick={this.handleSettingsClick}>
+                            settings
+                        </IconButton>
                         <IconButton onClick={this.handleCollapseClick}>
                             {collapseButtonSymbol}
                         </IconButton>
@@ -85,6 +93,7 @@ function mapStateToProps({ layerData }) {
 const mapDispatchToProps = {
     toggleLayerVisibility,
     adjustLayerOpacity,
+    openModal,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

@@ -5,6 +5,7 @@ import Menu from "../Menu/Menu";
 import DatePicker from "../DatePicker/DatePicker";
 import { UncontrolledRuler } from "../Ruler/Ruler";
 import Coordinates from "../Coordinates/Coordinates";
+import ModalContainer from "../Modal/ModalContainer";
 
 export default function App(props) {
     return (
@@ -14,6 +15,7 @@ export default function App(props) {
             <DatePicker />
             <UncontrolledRuler title="Feb 2018" range="1, 30" selected="5" />
             <Coordinates />
+            <ModalContainer />
         </div>
     );
 }
