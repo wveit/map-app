@@ -48,10 +48,7 @@ class Menu extends React.Component {
 
     render() {
         const props = this.props;
-        const layerDataComponents = this.props.layerData.map(function (
-            layer,
-            index
-        ) {
+        const layerControls = this.props.layerData.map(function (layer, index) {
             return (
                 <LayerControl
                     layer={layer}
@@ -96,10 +93,13 @@ class Menu extends React.Component {
                         </IconButton>
                     </div>
                 </div>
-                <SelectedDatasetsButtonPanel
-                    onAddDatasetClick={this.handleAddDatasetClick}
-                />
-                <div className="Menu__content">{layerDataComponents}</div>
+
+                <div className="Menu__content">
+                    <SelectedDatasetsButtonPanel
+                        onAddDatasetClick={this.handleAddDatasetClick}
+                    />
+                    <div className="Menu__layer-controls">{layerControls}</div>
+                </div>
             </div>
         );
     }

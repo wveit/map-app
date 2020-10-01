@@ -55,8 +55,11 @@
 
 .Menu__content {
     width: 450px;
-    height: 400px;
+}
+
+.Menu__layer-controls {
     overflow-y: scroll;
+    height: 400px;
 }
 
 #Menu.collapsed .Menu__content,
