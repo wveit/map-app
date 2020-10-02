@@ -1,6 +1,7 @@
 export const ADD_LAYER_DATA = "ADD_LAYER_DATA";
 export const TOGGLE_LAYER_VISIBILITY = "TOGGLE_LAYER_VISIBILITY";
 export const ADJUST_LAYER_OPACITY = "ADJUST_LAYER_OPACITY";
+export const SET_LAYER_ACTIVE = "SET_LAYER_ACTIVE";
 
 const defaultLayerData = {
     visible: false,
@@ -30,6 +31,16 @@ export function adjustLayerOpacity(id, opacity) {
         payload: {
             id,
             opacity,
+        },
+    };
+}
+
+export function setLayerActive(id, isActive) {
+    return {
+        type: SET_LAYER_ACTIVE,
+        payload: {
+            id,
+            isActive,
         },
     };
 }

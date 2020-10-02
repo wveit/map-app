@@ -10,7 +10,6 @@ export async function loadLayers(store) {
 async function getLayerConfig() {
     const response = await fetch("config/layers.json");
     const layerConfig = await response.json();
-    console.log("getLayerConfig()", layerConfig);
     return layerConfig;
 }
 
@@ -23,7 +22,6 @@ async function getLayersWithImageData(config) {
             layers.push(layer);
         }
     }
-    console.log("addImageryDataToConfig(...)", config);
     return layers;
 }
 

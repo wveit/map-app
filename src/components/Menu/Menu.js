@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {
     toggleLayerVisibility,
     adjustLayerOpacity,
+    setLayerActive,
 } from "../../actions/layerData";
 import { openModal } from "../../actions/modals";
 import LayerControl from "../LayerControl/LayerControl";
@@ -22,6 +23,9 @@ class Menu extends React.Component {
         this.handleShareClick = this.handleShareClick.bind(this);
         this.handleHelpClick = this.handleHelpClick.bind(this);
         this.handleAddDatasetClick = this.handleAddDatasetClick.bind(this);
+        this.handleRemoveDatasetClick = this.handleRemoveDatasetClick.bind(
+            this
+        );
     }
 
     handleHelpClick() {
@@ -46,15 +50,24 @@ class Menu extends React.Component {
         this.props.openModal("ADD_DATASET");
     }
 
+    handleRemoveDatasetClick(layerId) {
+        this.props.setLayerActive && this.props.setLayerActive(layerId, false);
+    }
+
     render() {
         const props = this.props;
+        const handleRemoveDatasetClick = this.handleRemoveDatasetClick;
         const layerControls = this.props.layerData.map(function (layer, index) {
+            if (!layer.isActive) {
+                return null;
+            }
             return (
                 <LayerControl
                     layer={layer}
                     key={index}
                     toggleLayerVisibility={props.toggleLayerVisibility}
                     adjustLayerOpacity={props.adjustLayerOpacity}
+                    onRemoveClick={handleRemoveDatasetClick}
                 />
             );
         });
@@ -115,6 +128,7 @@ const mapDispatchToProps = {
     toggleLayerVisibility,
     adjustLayerOpacity,
     openModal,
+    setLayerActive,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

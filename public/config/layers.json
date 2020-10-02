@@ -4,7 +4,7 @@
             "id": "BlueMarble_ShadedRelief",
             "title": "Blue Marble Shaded Relief",
             "visible": true,
-            "isBasemap": true,
+            "isActive": true,
             "imagery": {
                 "type": "GIBS_WMTS",
                 "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"

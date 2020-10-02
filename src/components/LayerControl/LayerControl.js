@@ -6,10 +6,13 @@ import "./LayerControl.css";
 import Colorbar from "../Colorbar/Colorbar";
 
 export default function LayerControl(props) {
+    function handleRemoveClick(layerId) {
+        props.onRemoveClick && props.onRemoveClick(layerId);
+    }
     return (
         <div className="LayerControl">
-            <LayerControlTop {...props} />
-            <LayerControlBottom {...props} />
+            <LayerControlTop onRemoveClick={handleRemoveClick} {...props} />
+            <LayerControlBottom onRemoveClick={handleRemoveClick} {...props} />
         </div>
     );
 }
@@ -23,6 +26,10 @@ function LayerControlTop(props) {
     function handleVisibilityToggle() {
         props.toggleLayerVisibility &&
             props.toggleLayerVisibility(props.layer.id);
+    }
+
+    function handleRemoveClick() {
+        props.onRemoveClick && props.onRemoveClick(props.layer.id);
     }
 
     return (
@@ -44,12 +51,18 @@ function LayerControlTop(props) {
                     </div>
                 </div>
             </div>
-            <div className={`right`}>{closeButton}</div>
+            <div className={`right`} onClick={handleRemoveClick}>
+                {closeButton}
+            </div>
         </div>
     );
 }
 
 function LayerControlBottom(props) {
+    function handleRemoveClick() {
+        props.onRemoveClick && props.onRemoveClick(props.layer.id);
+    }
+
     if (!props.layer.visible) return null;
 
     return (
@@ -63,7 +76,7 @@ function LayerControlBottom(props) {
                 <IconButton>layers</IconButton>
                 <OpacityControl {...props} />
                 <IconButton>info_outline</IconButton>
-                <IconButton>close</IconButton>
+                <IconButton onClick={handleRemoveClick}>close</IconButton>
             </div>
         </div>
     );
