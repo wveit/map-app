@@ -23,7 +23,7 @@ class MyMap extends React.Component {
         if (!this.state.mapIsLoaded) {
             return null;
         }
-        const layers = this.props.layers.map(function (layer) {
+        const layers = Object.values(this.props.layers).map((layer) => {
             return (
                 <Layer
                     map={map}

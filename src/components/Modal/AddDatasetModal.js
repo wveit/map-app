@@ -33,7 +33,7 @@ function AddDatasetModal({ layers, setLayerActive }) {
 
     const layerComponents =
         layers &&
-        layers.map((layer) => {
+        Object.values(layers).map((layer) => {
             return (
                 <DatasetItem
                     key={layer.id}

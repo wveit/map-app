@@ -57,14 +57,15 @@ class Menu extends React.Component {
     render() {
         const props = this.props;
         const handleRemoveDatasetClick = this.handleRemoveDatasetClick;
-        const layerControls = this.props.layerData.map(function (layer, index) {
+
+        const layerControls = Object.values(props.layerData).map((layer) => {
             if (!layer.isActive) {
                 return null;
             }
             return (
                 <LayerControl
                     layer={layer}
-                    key={index}
+                    key={layer.id}
                     toggleLayerVisibility={props.toggleLayerVisibility}
                     adjustLayerOpacity={props.adjustLayerOpacity}
                     onRemoveClick={handleRemoveDatasetClick}
