@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import App from "./components/App/App";
 import store from "./store";
 import { loadLayers } from "./util/layerLoader";
+import { changeMapDate } from "./actions/dates";
 import "./index.css";
 
 ReactDOM.render(
@@ -20,4 +21,7 @@ ReactDOM.render(
 //
 ////////////////////////////////////////////////////////////////
 
+const date = new Date();
+date.setDate(date.getDate() - 3);
+store.dispatch(changeMapDate(date));
 loadLayers(store);
