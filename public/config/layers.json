@@ -72,6 +72,15 @@
                 "type": "GIBS_WMTS",
                 "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"
             }
+        },
+        {
+            "id": "ascata_l2_coastal___wind_speed___2880_x_1440___day",
+            "title": "Wind Speed (day time) - GIRI",
+            "subtitle": "ASCAT",
+            "imagery": {
+                "type": "GIBS_WMTS",
+                "capabilities": "https://podaac-tools.jpl.nasa.gov/onearth/wmts/wmts.cgi?Service=WMTS&Request=GetCapabilities"
+            }
         }
     ]
 }
