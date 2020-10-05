@@ -49,7 +49,7 @@ class Layer extends React.Component {
         this.layer = new OlLayer({
             source: this.source,
             extent: this.props.extent,
-            visible: this.props.layer.visible,
+            visible: this.props.layer.isVisible,
             opacity: Number(this.props.layer.opacity) / 100,
             zIndex: this.props.zIndex,
         });
@@ -60,7 +60,7 @@ class Layer extends React.Component {
     componentDidUpdate() {
         const { data } = this.props.layer.imagery;
 
-        this.layer.setVisible(this.props.layer.visible);
+        this.layer.setVisible(this.props.layer.isVisible);
         this.layer.setOpacity(Number(this.props.layer.opacity) / 100);
         this.layer.setZIndex(this.props.zIndex);
 

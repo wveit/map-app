@@ -20,7 +20,7 @@ export default function layerData(state = {}, action) {
             const layers = state;
             const layerId = action.payload;
             const changedLayer = layers[layerId];
-            changedLayer.visible = !changedLayer.visible;
+            changedLayer.isVisible = !changedLayer.isVisible;
             return {
                 ...layers,
                 [layerId]: changedLayer,
@@ -43,7 +43,7 @@ export default function layerData(state = {}, action) {
             const { id, isActive } = action.payload;
             const newLayer = { ...layers[id] };
             newLayer.isActive = isActive;
-            newLayer.visible = isActive;
+            newLayer.isVisible = isActive;
             return {
                 ...layers,
                 [id]: newLayer,

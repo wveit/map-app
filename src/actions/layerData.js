@@ -5,7 +5,7 @@ export const SET_LAYER_ACTIVE = "SET_LAYER_ACTIVE";
 export const MOVE_SELECTED_LAYER = "MOVE_SELECTED_LAYER";
 
 const defaultLayerData = {
-    visible: false,
+    isVisible: false,
     opacity: 100,
 };
 

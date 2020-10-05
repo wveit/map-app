@@ -3,7 +3,7 @@
         {
             "id": "BlueMarble_ShadedRelief",
             "title": "Blue Marble Shaded Relief",
-            "visible": true,
+            "isVisible": true,
             "isActive": true,
             "imagery": {
                 "type": "GIBS_WMTS",
@@ -32,6 +32,8 @@
             "id": "GHRSST_L4_MUR_Sea_Surface_Temperature",
             "title": "Sea Surface Temperature (L4, 1km, Daily)",
             "subtitle": "GHRSST MEaSUREs MUR/PO.DAAC",
+            "isVisible": true,
+            "isActive": true,
             "imagery": {
                 "type": "GIBS_WMTS",
                 "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"

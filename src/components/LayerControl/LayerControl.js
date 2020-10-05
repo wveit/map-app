@@ -19,7 +19,7 @@ export default function LayerControl(props) {
 
 function LayerControlTop(props) {
     let closeButton = null;
-    if (!props.layer.visible) {
+    if (!props.layer.isVisible) {
         closeButton = <IconButton>close</IconButton>;
     }
 
@@ -37,7 +37,7 @@ function LayerControlTop(props) {
             <div className="left">
                 <Switch
                     readOnly
-                    checked={props.layer.visible}
+                    checked={props.layer.isVisible}
                     onClick={handleVisibilityToggle}
                     color="primary"
                     size="small"
@@ -63,7 +63,7 @@ function LayerControlBottom(props) {
         props.onRemoveClick && props.onRemoveClick(props.layer.id);
     }
 
-    if (!props.layer.visible) return null;
+    if (!props.layer.isVisible) return null;
 
     return (
         <div className="LayerControl__bottom left-right-container">
