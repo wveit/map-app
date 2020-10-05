@@ -42,38 +42,67 @@ function DatePicker(props) {
 
     return (
         <div className="DatePicker">
-            <div className="DatePicker__year">
-                <div className="material-icons" onClick={incrementYear}>
+            <div className="DatePicker__chooser DatePicker__year">
+                <div
+                    className="DatePicker__arrow material-icons"
+                    onClick={incrementYear}
+                >
                     arrow_drop_up
                 </div>
-                <input type="text" value={props.date.getFullYear()} readOnly />
-                <div className="material-icons" onClick={decrementYear}>
+                <input
+                    className="DatePicker__input"
+                    type="text"
+                    value={props.date.getFullYear()}
+                    readOnly
+                />
+                <div
+                    className="DatePicker__arrow material-icons"
+                    onClick={decrementYear}
+                >
                     arrow_drop_down
                 </div>
             </div>
 
-            <div className="DatePicker__month">
-                <div className="material-icons" onClick={incrementMonth}>
+            <div className="DatePicker__chooser DatePicker__month">
+                <div
+                    className="DatePicker__arrow material-icons"
+                    onClick={incrementMonth}
+                >
                     arrow_drop_up
                 </div>
                 <input
+                    className="DatePicker__input"
                     type="text"
                     value={props.date.toLocaleString("default", {
                         month: "short",
                     })}
                     readOnly
                 />
-                <div className="material-icons" onClick={decrementMonth}>
+                <div
+                    className="DatePicker__arrow material-icons"
+                    onClick={decrementMonth}
+                >
                     arrow_drop_down
                 </div>
             </div>
 
-            <div className="DatePicker__date">
-                <div className="material-icons" onClick={incrementDate}>
+            <div className="DatePicker__chooser DatePicker__date">
+                <div
+                    className="DatePicker__arrow material-icons"
+                    onClick={incrementDate}
+                >
                     arrow_drop_up
                 </div>
-                <input type="text" value={props.date.getDate()} readOnly />
-                <div className="material-icons" onClick={decrementDate}>
+                <input
+                    className="DatePicker__input"
+                    type="text"
+                    value={props.date.getDate()}
+                    readOnly
+                />
+                <div
+                    className="DatePicker__arrow material-icons"
+                    onClick={decrementDate}
+                >
                     arrow_drop_down
                 </div>
             </div>
