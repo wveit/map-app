@@ -5,7 +5,7 @@ import "./ModalContainer.css";
 import SettingsModal from "./SettingsModal";
 import ShareModal from "./ShareModal";
 import HelpModal from "./HelpModal";
-import AddLayerModal from "./AddLayerModal";
+import AddLayerMenuContainer from "../AddLayerMenu/AddLayerMenuContainer";
 
 function ModalContainer(props) {
     if (!props.currentModal) {
@@ -32,7 +32,7 @@ function getProperModal(modalName) {
         case "HELP":
             return <HelpModal />;
         case "ADD_LAYER":
-            return <AddLayerModal />;
+            return <AddLayerMenuContainer />;
         default:
             return null;
     }

@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
+import "./index.css";
 import AppContainer from "./components/App/AppContainer";
 import store from "./store";
 import { loadLayers } from "./util/layerLoader";
 import { changeMapDate } from "./actions/dates";
-import "./index.css";
 
 ReactDOM.render(
     <Provider store={store}>

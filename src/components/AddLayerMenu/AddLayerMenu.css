@@ -1,10 +1,19 @@
 .AddLayerMenu {
     background-color: white;
-    display: flex;
+    z-index: 2;
+    width: 80rem;
+    max-width: 95%;
+    height: 80rem;
+    max-height: 90%;
 }
 
-.AddLayerMenu > * {
-    width: 300px;
+.AddLayerMenu__columns {
+    display: flex;
+    width: 100%;
+}
+
+.AddLayerMenu__column {
+    width: 33%;
 }
 
 .AddLayerMenu__header {

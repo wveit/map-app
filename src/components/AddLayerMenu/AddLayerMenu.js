@@ -1,6 +1,7 @@
 import React from "react";
 import "./AddLayerMenu.css";
 import IconButton from "../Button/IconButton";
+import TitleBar from "../TitleBar/TitleBar";
 
 function Layer({ layer, onLayerToggle }) {
     function handleToggle() {
@@ -48,17 +49,24 @@ function AddLayerMenu({ layers, setLayerActive }) {
 
     return (
         <div className="AddLayerMenu">
-            <div className="AddLayerMenu__filter-list">
-                <div className="AddLayerMenu__header">SEARCH</div>
-                <div className="AddLayerMenu__scroll"></div>
-            </div>
-            <div className="AddLayerMenu__layer-list">
-                <div className="AddLayerMenu__header">MATCHING LAYERS</div>
-                <div className="AddLayerMenu__scroll">{layerComponents}</div>
-            </div>
-            <div className="AddLayerMenu__layer-info">
-                <div className="AddLayerMenu__header">LAYER INFORMATION</div>
-                <div className="AddLayerMenu__scroll"></div>
+            <TitleBar>Available Layers</TitleBar>
+            <div className="AddLayerMenu__columns">
+                <div className="AddLayerMenu__filter-list AddLayerMenu__column">
+                    <div className="AddLayerMenu__header">SEARCH</div>
+                    <div className="AddLayerMenu__scroll"></div>
+                </div>
+                <div className="AddLayerMenu__layer-list AddLayerMenu__column">
+                    <div className="AddLayerMenu__header">MATCHING LAYERS</div>
+                    <div className="AddLayerMenu__scroll">
+                        {layerComponents}
+                    </div>
+                </div>
+                <div className="AddLayerMenu__layer-info AddLayerMenu__column">
+                    <div className="AddLayerMenu__header">
+                        LAYER INFORMATION
+                    </div>
+                    <div className="AddLayerMenu__scroll"></div>
+                </div>
             </div>
         </div>
     );
