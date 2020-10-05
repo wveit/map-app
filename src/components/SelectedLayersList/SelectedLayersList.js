@@ -17,11 +17,8 @@ function SelectedLayersList(props) {
     }
 
     let layerControls = "No layer data has been provided.";
-    if (props.layerData) {
-        layerControls = Object.values(props.layerData).map((layer) => {
-            if (!layer.isActive) {
-                return null;
-            }
+    if (props.layers) {
+        layerControls = props.layers.map((layer) => {
             return (
                 <LayerControl
                     layer={layer}

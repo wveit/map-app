@@ -23,7 +23,7 @@ class MyMap extends React.Component {
         if (!this.state.mapIsLoaded) {
             return null;
         }
-        const layers = Object.values(this.props.layers).map((layer) => {
+        const layers = this.props.layers.map((layer) => {
             return (
                 <Layer
                     map={map}
@@ -74,10 +74,10 @@ class MyMap extends React.Component {
     componentWillUnmount() {}
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ selectedLayers, layerData, dates }) {
     return {
-        layers: state.layerData,
-        mapDate: state.dates.mapDate,
+        layers: selectedLayers.map((layerId) => layerData[layerId]),
+        mapDate: dates.mapDate,
     };
 }
 

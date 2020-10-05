@@ -6,8 +6,8 @@ import {
     setLayerActive,
 } from "../../actions/layerData";
 
-function mapStateToProps({ layerData }) {
-    return { layerData };
+function mapStateToProps({ selectedLayers, layerData }) {
+    return { layers: selectedLayers.map((layerId) => layerData[layerId]) };
 }
 
 const mapDispatchToProps = {
