@@ -23,7 +23,7 @@ class MyMap extends React.Component {
         if (!this.state.mapIsLoaded) {
             return null;
         }
-        const layers = this.props.layers.map((layer) => {
+        const layers = this.props.layers.map((layer, index) => {
             return (
                 <Layer
                     map={map}
@@ -31,6 +31,7 @@ class MyMap extends React.Component {
                     mapDate={mapDate}
                     extent={LAYER_EXTENT}
                     key={layer.id}
+                    zIndex={-index}
                 />
             );
         });

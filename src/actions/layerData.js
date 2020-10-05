@@ -2,6 +2,7 @@ export const ADD_LAYER_DATA = "ADD_LAYER_DATA";
 export const TOGGLE_LAYER_VISIBILITY = "TOGGLE_LAYER_VISIBILITY";
 export const ADJUST_LAYER_OPACITY = "ADJUST_LAYER_OPACITY";
 export const SET_LAYER_ACTIVE = "SET_LAYER_ACTIVE";
+export const MOVE_SELECTED_LAYER = "MOVE_SELECTED_LAYER";
 
 const defaultLayerData = {
     visible: false,
@@ -41,6 +42,17 @@ export function setLayerActive(id, isActive) {
         payload: {
             id,
             isActive,
+        },
+    };
+}
+
+export function moveSelectedLayer(id, fromIndex, toIndex) {
+    return {
+        type: MOVE_SELECTED_LAYER,
+        payload: {
+            id,
+            fromIndex,
+            toIndex,
         },
     };
 }

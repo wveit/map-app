@@ -51,6 +51,7 @@ class Layer extends React.Component {
             extent: this.props.extent,
             visible: this.props.layer.visible,
             opacity: Number(this.props.layer.opacity) / 100,
+            zIndex: this.props.zIndex,
         });
 
         this.props.map.addLayer(this.layer);
@@ -61,6 +62,7 @@ class Layer extends React.Component {
 
         this.layer.setVisible(this.props.layer.visible);
         this.layer.setOpacity(Number(this.props.layer.opacity) / 100);
+        this.layer.setZIndex(this.props.zIndex);
 
         const mapDate = this.props.mapDate;
         let time = null;

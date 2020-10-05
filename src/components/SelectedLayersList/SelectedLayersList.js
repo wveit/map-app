@@ -1,5 +1,6 @@
 import React from "react";
 import LayerControl from "../LayerControl/LayerControl";
+import { DragDropList, DragDropItem } from "../DragDropList/DragDropList";
 import "./SelectedLayersList.css";
 
 function SelectedLayersList(props) {
@@ -16,17 +17,32 @@ function SelectedLayersList(props) {
             props.onLayerOpacityChange(layerId, opacity);
     }
 
+    function handleLayerMove(result) {
+        if (!(result.draggableId && result.source && result.destination))
+            return;
+        console.log(result);
+        const layerId = result.draggableId;
+        const fromIndex = result.source.index;
+        const toIndex = result.destination.index;
+        props.onLayerMove && props.onLayerMove(layerId, fromIndex, toIndex);
+    }
+
     let layerControls = "No layer data has been provided.";
     if (props.layers) {
-        layerControls = props.layers.map((layer) => {
+        layerControls = props.layers.map((layer, index) => {
             return (
-                <LayerControl
-                    layer={layer}
+                <DragDropItem
+                    draggableId={layer.id}
+                    index={index}
                     key={layer.id}
-                    toggleLayerVisibility={handleLayerVisibilityToggle}
-                    adjustLayerOpacity={handleLayerOpacityChange}
-                    onRemoveClick={handleLayerRemove}
-                />
+                >
+                    <LayerControl
+                        layer={layer}
+                        toggleLayerVisibility={handleLayerVisibilityToggle}
+                        adjustLayerOpacity={handleLayerOpacityChange}
+                        onRemoveClick={handleLayerRemove}
+                    />
+                </DragDropItem>
             );
         });
     }
@@ -34,7 +50,13 @@ function SelectedLayersList(props) {
         layerControls = "Click the Add Layers button to add some layers.";
     }
 
-    return <div className="SelectedLayersList">{layerControls}</div>;
+    return (
+        <div className="SelectedLayersList">
+            <DragDropList onDragEnd={handleLayerMove}>
+                {layerControls}
+            </DragDropList>
+        </div>
+    );
 }
 
 export default SelectedLayersList;
