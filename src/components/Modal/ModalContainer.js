@@ -12,15 +12,13 @@ function ModalContainer(props) {
         return null;
     }
 
-    const modal = getProperModal(props.currentModal);
-
     return (
         <div className="ModalContainer">
             <div
                 className="ModalContainer__background"
                 onClick={props.closeModal}
             ></div>
-            {modal}
+            {getProperModal(props.currentModal)}
         </div>
     );
 }

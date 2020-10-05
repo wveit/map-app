@@ -1,52 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setLayerActive } from "../../actions/layerData";
+import ModalTitleBar from "./ModalTitleBar";
+import AddLayerMenu from "../AddLayerMenu/AddLayerMenu";
 
-const addLayerModalStyle = {
-    width: "600px",
-    height: "400px",
-    backgroundColor: "white",
-    zIndex: 2,
-};
-
-function LayerItem({ layer, onLayerToggle }) {
-    function handleToggle() {
-        onLayerToggle && onLayerToggle(layer.id, !layer.isActive);
-    }
-
+function AddLayerModal(props) {
     return (
-        <div key={layer.id}>
-            <input
-                type="checkbox"
-                checked={layer.isActive || false}
-                onChange={handleToggle}
+        <div className="AddLayerModal" style={{ zIndex: "2" }}>
+            <ModalTitleBar>
+                <h3>Available Layers</h3>
+            </ModalTitleBar>
+            <AddLayerMenu
+                setLayerActive={props.setLayerActive}
+                layers={props.layers}
             />
-            {layer.title}
-        </div>
-    );
-}
-
-function AddLayerModal({ layers, setLayerActive }) {
-    function handleActiveLayerToggle(id, isActive) {
-        setLayerActive && setLayerActive(id, isActive);
-    }
-
-    const layerComponents =
-        layers &&
-        Object.values(layers).map((layer) => {
-            return (
-                <LayerItem
-                    key={layer.id}
-                    onLayerToggle={handleActiveLayerToggle}
-                    layer={layer}
-                ></LayerItem>
-            );
-        });
-
-    return (
-        <div className="SettingsModal" style={addLayerModalStyle}>
-            <h3>Add Layer</h3>
-            {layerComponents}
         </div>
     );
 }
