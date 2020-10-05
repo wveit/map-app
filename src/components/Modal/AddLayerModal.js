@@ -2,14 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { setLayerActive } from "../../actions/layerData";
 
-const addDatasetModalStyle = {
+const addLayerModalStyle = {
     width: "600px",
     height: "400px",
     backgroundColor: "white",
     zIndex: 2,
 };
 
-function DatasetItem({ layer, onLayerToggle }) {
+function LayerItem({ layer, onLayerToggle }) {
     function handleToggle() {
         onLayerToggle && onLayerToggle(layer.id, !layer.isActive);
     }
@@ -26,7 +26,7 @@ function DatasetItem({ layer, onLayerToggle }) {
     );
 }
 
-function AddDatasetModal({ layers, setLayerActive }) {
+function AddLayerModal({ layers, setLayerActive }) {
     function handleActiveLayerToggle(id, isActive) {
         setLayerActive && setLayerActive(id, isActive);
     }
@@ -35,17 +35,17 @@ function AddDatasetModal({ layers, setLayerActive }) {
         layers &&
         Object.values(layers).map((layer) => {
             return (
-                <DatasetItem
+                <LayerItem
                     key={layer.id}
                     onLayerToggle={handleActiveLayerToggle}
                     layer={layer}
-                ></DatasetItem>
+                ></LayerItem>
             );
         });
 
     return (
-        <div className="SettingsModal" style={addDatasetModalStyle}>
-            <h3>Add Dataset</h3>
+        <div className="SettingsModal" style={addLayerModalStyle}>
+            <h3>Add Layer</h3>
             {layerComponents}
         </div>
     );
@@ -61,4 +61,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddDatasetModal);
+export default connect(mapStateToProps, mapDispatchToProps)(AddLayerModal);

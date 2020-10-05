@@ -1,4 +1,4 @@
-.SelectedDatasetsButtonPanel {
+.SelectedLayersButtonPanel {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,7 +9,7 @@
     font-size: 14px;
 }
 
-.SelectedDatasetsButtonPanel__button {
+.SelectedLayersButtonPanel__button {
     background-color: rgb(2, 136, 209);
     color: white;
     padding: 5px 10px;

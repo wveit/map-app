@@ -1,8 +1,8 @@
 import React from "react";
 import LayerControl from "../LayerControl/LayerControl";
-import "./SelectedDatasetsList.css";
+import "./SelectedLayersList.css";
 
-function SelectedDatasetsList(props) {
+function SelectedLayersList(props) {
     function handleLayerRemove(layerId) {
         props.onLayerRemove && props.onLayerRemove(layerId);
     }
@@ -34,10 +34,10 @@ function SelectedDatasetsList(props) {
         });
     }
     if (layerControls.length === 0) {
-        layerControls = "Click the Add Datasets button to add some layers.";
+        layerControls = "Click the Add Layers button to add some layers.";
     }
 
-    return <div className="SelectedDatasetsList">{layerControls}</div>;
+    return <div className="SelectedLayersList">{layerControls}</div>;
 }
 
-export default SelectedDatasetsList;
+export default SelectedLayersList;

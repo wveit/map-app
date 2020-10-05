@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import MenuFrame from "./MenuFrame";
 import { openModal } from "../../actions/modals";

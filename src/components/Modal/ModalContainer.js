@@ -5,7 +5,7 @@ import "./ModalContainer.css";
 import SettingsModal from "./SettingsModal";
 import ShareModal from "./ShareModal";
 import HelpModal from "./HelpModal";
-import AddDatasetModal from "./AddDatasetModal";
+import AddLayerModal from "./AddLayerModal";
 
 function ModalContainer(props) {
     if (!props.currentModal) {
@@ -33,8 +33,8 @@ function getProperModal(modalName) {
             return <ShareModal />;
         case "HELP":
             return <HelpModal />;
-        case "ADD_DATASET":
-            return <AddDatasetModal />;
+        case "ADD_LAYER":
+            return <AddLayerModal />;
         default:
             return null;
     }

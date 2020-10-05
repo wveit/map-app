@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import SelectedDatasetsList from "./SelectedDatasetsList";
+import SelectedLayersList from "./SelectedLayersList";
 import {
     toggleLayerVisibility,
     adjustLayerOpacity,
@@ -16,7 +16,4 @@ const mapDispatchToProps = {
     onLayerRemove: (layerId) => setLayerActive(layerId, false),
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(SelectedDatasetsList);
+export default connect(mapStateToProps, mapDispatchToProps)(SelectedLayersList);

@@ -1,13 +1,13 @@
 import React from "react";
 import MenuFrameContainer from "../MenuFrame/MenuFrameContainer";
-import SelectedDatasetsButtonPanelContainer from "../SelectedDatasetsButtonPanel/SelectedDatasetsButtonPanelContainer";
-import SelectedDatasetsListContainer from "../SelectedDatasetsList/SelectedDatasetsListContainer";
+import SelectedLayersButtonPanelContainer from "../SelectedLayersButtonPanel/SelectedLayersButtonPanelContainer";
+import SelectedLayersListContainer from "../SelectedLayersList/SelectedLayersListContainer";
 
 function MenuContainer(props) {
     return (
         <MenuFrameContainer>
-            <SelectedDatasetsButtonPanelContainer />
-            <SelectedDatasetsListContainer />
+            <SelectedLayersButtonPanelContainer />
+            <SelectedLayersListContainer />
         </MenuFrameContainer>
     );
 }
