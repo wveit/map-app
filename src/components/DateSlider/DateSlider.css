@@ -1,0 +1,90 @@
+.DateSlider {
+    position: absolute;
+    left: 300px;
+    bottom: 0px;
+    width: 60%;
+}
+
+.vis-timeline.vis-bottom,
+.vis-panel.vis-center {
+    border: none;
+}
+
+.vis-time-axis.vis-foreground {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-top: 2px solid white;
+}
+.vis-time-axis.vis-background {
+    visibility: hidden;
+}
+
+.vis-time-axis .vis-minor.vis-vertical {
+    border: none;
+}
+
+.vis-january {
+    border-left: 1px solid white;
+}
+
+.vis-text.vis-minor {
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+    font-size: 0.8em;
+}
+
+.vis-text.vis-minor:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.vis-text.vis-minor::before {
+    content: "";
+    display: block;
+    background-color: white;
+    width: 1px;
+    height: 5px;
+    margin-bottom: 2px;
+}
+
+.vis-text.vis-major {
+    color: white;
+    font-size: 0.8em;
+    padding-left: 10px;
+}
+
+.vis-content {
+    height: 10px;
+}
+
+.vis-current-time {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.vis-current-time::before {
+    content: "";
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: 7px;
+    left: -5px;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+}
+
+.vis-current-time::after {
+    content: "";
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
