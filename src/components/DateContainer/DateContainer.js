@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { changeMapDate } from "../../actions/dates";
+import { changeMapDate, changeDateSliderUnit } from "../../actions/dates";
 import DatePicker from "../DatePicker/DatePicker";
 import "../DatePicker/DatePicker.css";
 import DateSlider from "../DateSlider/DateSlider";
@@ -10,7 +10,6 @@ import "../DateUnitChooser/DateUnitChooser.css";
 import "./DateContainer.css";
 
 function DateContainer(props) {
-    const [dateUnit, setDateUnit] = React.useState("month");
     return (
         <div className="DateContainer">
             <DatePicker
@@ -19,13 +18,16 @@ function DateContainer(props) {
                 date={props.date}
             />
             <DateSlider
-                unit={dateUnit}
+                unit={props.dateUnit}
                 currentDate={props.date}
                 onClick={props.changeMapDate}
                 unitWidthInPixels={40}
                 snapToUnit
             />
-            <DateUnitChooser unit={dateUnit} onUnitChoice={setDateUnit} />
+            <DateUnitChooser
+                unit={props.dateUnit}
+                onUnitChoice={props.changeDateSliderUnit}
+            />
         </div>
     );
 }
@@ -33,11 +35,13 @@ function DateContainer(props) {
 function mapStateToProps(state) {
     return {
         date: state.dates.mapDate,
+        dateUnit: state.dates.dateSliderUnit,
     };
 }
 
 const mapDispatchToProps = {
     changeMapDate,
+    changeDateSliderUnit,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DateContainer);
