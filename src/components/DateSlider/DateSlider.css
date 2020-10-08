@@ -1,6 +1,7 @@
 /* Set default dimensions of DateSlider */
 .DateSlider {
     width: 200px;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* Remove default lines/borders provided by vis-timeline */
@@ -15,7 +16,6 @@
 /* Format the timeline the way I want it */
 .vis-time-axis.vis-foreground {
     color: white;
-    background-color: rgba(0, 0, 0, 0.3);
     border-top: 2px solid white;
 }
 .vis-day1,

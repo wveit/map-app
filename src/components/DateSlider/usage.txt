@@ -1,0 +1,34 @@
+
+*** JS Usage ***
+
+import DateSlider from "(_whatever_path_)/DateSlider";
+import "(_whatever_path_)/DateSlider.css"; // if you want SOTO style
+
+<DateSlider 
+    id="my-date-slider"
+    className="css-class1 css-class2"
+    unit="year | month | day"
+    unitWidthInPixels={ Integer }
+    onClick={date => { ... Do something with the date }}
+    currentDate={new Date(2020, 2, 12)}
+    snapToUnit={ Boolean }
+    minDate={new Date(...)} (not implemented yet)
+    maxDate={new Date(...)} (not implemented yet)
+    color="#FFFFFF" (not implemented yet) 
+/>
+
+// Notes:
+//  'currentDate' sets the marker
+//  'snapToUnit' determines if the marker will snap to the nearest year/month/day
+//  'color' is for text, markers, lines, and borders
+//  dependencies: vis-timeline and react-resize-detector
+
+*** CSS Usage ***
+
+#my-date-slider {
+    width: 90%;         // can also do "width: 500px;" or "flex-grow: 2;"
+    position: abslute;  // can also do "position: relative;"
+    left: 200px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+}

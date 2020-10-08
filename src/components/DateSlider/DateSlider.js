@@ -1,40 +1,3 @@
-/*
-    *** JS Usage ***
-
-    import DateSlider from "(_whatever_path_)/DateSlider";
-    import "(_whatever_path_)/DateSlider.css"; // if you want SOTO style
-
-    <DateSlider 
-        id="my-date-slider"
-        className="css-class1 css-class2"
-        unit="year | month | day"
-        unitWidthInPixels={ Integer }
-        onClick={date => { ... Do something with the date }}
-        currentDate={new Date(2020, 2, 12)}
-        snapToUnit={ Boolean }
-        minDate={new Date(...)} (not implemented yet)
-        maxDate={new Date(...)} (not implemented yet)
-        color="#FFFFFF" (not implemented yet) 
-    />
-
-    // Notes:
-    //  'currentDate' sets the marker
-    //  'snapToUnit' determines if the marker will snap to the nearest year/month/day
-    //  'color' is for text, markers, lines, and borders
-    //  dependencies: vis-timeline and react-resize-detector
-
-    *** CSS Usage ***
-   
-    #my-date-slider {
-        width: 90%;         // can also do "width: 500px;" or "flex-grow: 2;"
-        position: abslute;  // can also do "position: relative;"
-        left: 200px;
-        bottom: 0px;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-
-*/
-
 import React from "react";
 import { Timeline } from "vis-timeline/standalone";
 import { withResizeDetector } from "react-resize-detector";
@@ -98,13 +61,14 @@ class DateSlider extends React.Component {
     }
 
     updateTimeline() {
-        // set unit
+        // set units for time-axis
         this.timeline.setOptions({
             timeAxis: {
                 scale: this.props.unit,
                 step: 1,
             },
         });
+
         // update the currentDate if props.currentDate changes
         if (this.props.currentDate) {
             let currentDate = new Date(this.props.currentDate);
@@ -113,6 +77,7 @@ class DateSlider extends React.Component {
                     currentDate.setHours(12);
                 } else if (this.props.unit === "month") {
                     currentDate.setDate(15);
+                    currentDate.setHours(24);
                 } else if (this.props.unit === "year") {
                     currentDate.setMonth(5);
                 }
@@ -120,26 +85,31 @@ class DateSlider extends React.Component {
             this.timeline.setCurrentTime(currentDate);
         }
 
-        // update the timespan if props.width changes
-        if (
-            this.props.width &&
-            this.props.unitWidthInPixels &&
-            this.props.unit
-        ) {
-            // get the current endDate
-            const endDate = this.timeline.getWindow().end;
+        // find the correct timespan, given the width of the element, the unit, and the pixelsPerUnit
+        // if any of these don't exist, just use the existing timespan
+        const width = this.props.width || 500;
+        const unit = this.props.unit || "day";
+        const unitWidthInPixels = this.props.unitWidthInPixels || 50;
+        const timespan =
+            (width / unitWidthInPixels) * MILLISECONDS_PER_UNIT[unit];
 
-            // get the new timespan
-            const timespan =
-                (this.props.width / this.props.unitWidthInPixels) *
-                MILLISECONDS_PER_UNIT[this.props.unit];
+        // construct a start and end date using the old start/end dates and the new timespan
+        const startDate = this.timeline.getWindow().start;
+        let startMillis = startDate.getTime();
+        let endMillis = startMillis + timespan;
+        let currentMillis = this.props.currentDate.getTime();
 
-            // get the startDate from the endDate and timespan
-            const startDate = new Date(endDate.getTime() - timespan);
-
-            // set the start and end dates for the timeline
-            this.timeline.setWindow(startDate, endDate);
+        // if currentTime is outside this start/end, adjust the start/end
+        if (currentMillis - startMillis < timespan / 8) {
+            startMillis = currentMillis - timespan / 2;
+            endMillis = startMillis + timespan;
+        } else if (endMillis - currentMillis < timespan / 8) {
+            startMillis = currentMillis - timespan / 2;
+            endMillis = startMillis + timespan;
         }
+
+        // set the current window with these start and end dates
+        this.timeline.setWindow(new Date(startMillis), new Date(endMillis));
     }
 
     handleClick(event) {

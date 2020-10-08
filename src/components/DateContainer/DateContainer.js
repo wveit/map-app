@@ -22,7 +22,7 @@ function DateContainer(props) {
                 unit={dateUnit}
                 currentDate={props.date}
                 onClick={props.changeMapDate}
-                unitWidthInPixels={50}
+                unitWidthInPixels={40}
                 snapToUnit
             />
             <DateUnitChooser unit={dateUnit} onUnitChoice={setDateUnit} />
