@@ -24,7 +24,6 @@ class DateSlider extends React.Component {
     }
 
     render() {
-        console.log("render");
         return (
             <div
                 id={this.props.id}
@@ -46,7 +45,6 @@ class DateSlider extends React.Component {
     }
 
     componentDidMount() {
-        console.log("componentDidMount");
         this.timeline = new Timeline(
             this.containerRef.current,
             [],
@@ -56,7 +54,6 @@ class DateSlider extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log("componentDidUpdate", this.props);
         this.updateTimeline();
     }
 

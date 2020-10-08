@@ -20,7 +20,6 @@ function SelectedLayersList(props) {
     function handleLayerMove(result) {
         if (!(result.draggableId && result.source && result.destination))
             return;
-        console.log(result);
         const layerId = result.draggableId;
         const fromIndex = result.source.index;
         const toIndex = result.destination.index;
