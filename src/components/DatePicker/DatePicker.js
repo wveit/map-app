@@ -1,9 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
-import { changeMapDate } from "../../actions/dates";
-import "./DatePicker.css";
 
-function DatePicker(props) {
+export default function DatePicker(props) {
     const newDate = new Date(props.date);
 
     function incrementYear() {
@@ -41,7 +38,10 @@ function DatePicker(props) {
     }
 
     return (
-        <div className="DatePicker">
+        <div
+            id={props.id}
+            className={"DatePicker " + (props.className ? props.className : "")}
+        >
             <div className="DatePicker__chooser DatePicker__year">
                 <div
                     className="DatePicker__arrow material-icons"
@@ -109,15 +109,3 @@ function DatePicker(props) {
         </div>
     );
 }
-
-function mapStateToProps(state) {
-    return {
-        date: state.dates.mapDate,
-    };
-}
-
-const mapDispatchToProps = {
-    changeMapDate,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DatePicker);

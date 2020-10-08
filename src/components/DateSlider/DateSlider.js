@@ -2,6 +2,7 @@
     *** JS Usage ***
 
     import DateSlider from "(_whatever_path_)/DateSlider";
+    import "(_whatever_path_)/DateSlider.css"; // if you want SOTO style
 
     <DateSlider 
         id="my-date-slider"
@@ -16,10 +17,11 @@
         color="#FFFFFF" (not implemented yet) 
     />
 
-    // 'currentDate' sets the marker
-    // 'snapToUnit' determines if the marker will snap to the nearest year/month/day
-    // 'color' is for text, markers, lines, and borders
-    // dependencies: vis-timeline and react-resize-detector
+    // Notes:
+    //  'currentDate' sets the marker
+    //  'snapToUnit' determines if the marker will snap to the nearest year/month/day
+    //  'color' is for text, markers, lines, and borders
+    //  dependencies: vis-timeline and react-resize-detector
 
     *** CSS Usage ***
    
@@ -36,7 +38,6 @@
 import React from "react";
 import { Timeline } from "vis-timeline/standalone";
 import { withResizeDetector } from "react-resize-detector";
-import "./DateSlider.css";
 
 const MILLISECONDS_PER_UNIT = {
     day: 24 * 60 * 60 * 1000,
@@ -65,8 +66,9 @@ class DateSlider extends React.Component {
             <div
                 id={this.props.id}
                 className={
-                    "DateSlider" +
-                    (this.props.className ? " " + this.props.className : "")
+                    "DateSlider " +
+                    `DateSlider__${this.props.unit}` +
+                    (this.props.className ? this.props.className : "")
                 }
                 onPointerDown={this.handleMouseDown}
                 onPointerUp={this.handleMouseUp}

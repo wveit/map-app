@@ -1,29 +1,25 @@
+/* Set default dimensions of DateSlider */
 .DateSlider {
-    position: absolute;
-    left: 300px;
-    bottom: 0px;
-    width: 60%;
+    width: 200px;
 }
 
-.vis-timeline.vis-bottom,
+/* Remove default lines/borders provided by vis-timeline */
+.vis-timeline,
 .vis-panel.vis-center {
     border: none;
-}
-
-.vis-time-axis.vis-foreground {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-top: 2px solid white;
 }
 .vis-time-axis.vis-background {
     visibility: hidden;
 }
 
-.vis-time-axis .vis-minor.vis-vertical {
-    border: none;
+/* Format the timeline the way I want it */
+.vis-time-axis.vis-foreground {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-top: 2px solid white;
 }
-
-.vis-january {
+.vis-day1,
+.DateSlider__month .vis-january {
     border-left: 1px solid white;
 }
 
@@ -36,12 +32,17 @@
     padding-top: 0;
     font-size: 0.8em;
 }
-
 .vis-text.vis-minor:hover {
     background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer;
 }
+.vis-text.vis-major {
+    color: white;
+    font-size: 0.8em;
+    padding-left: 10px;
+}
 
+/* Place a tick mark at every date/month/year */
 .vis-text.vis-minor::before {
     content: "";
     display: block;
@@ -51,12 +52,9 @@
     margin-bottom: 2px;
 }
 
-.vis-text.vis-major {
-    color: white;
-    font-size: 0.8em;
-    padding-left: 10px;
-}
-
+/* Make the current-time marker look like a fancy dot instead of a line */
+/* Note: vis-content section needs to be visible, but not too big for   */
+/* this to work. */
 .vis-content {
     height: 10px;
 }

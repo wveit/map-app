@@ -1,5 +1,4 @@
 import React from "react";
-import "./DateUnitChooser.css";
 
 export default function DateUnitChooser(props) {
     function handleClick(unit) {

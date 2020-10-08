@@ -1,0 +1,15 @@
+.DateContainer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+}
+
+.DatePicker {
+    width: 200px;
+}
+
+.DateSlider {
+    width: 200px;
+    flex-grow: 1;
+}
