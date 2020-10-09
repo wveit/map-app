@@ -7,6 +7,7 @@ import AppContainer from "./components/App/AppContainer";
 import store from "./store";
 import { loadLayers } from "./util/layerLoader";
 import { changeMapDate } from "./actions/dates";
+import { setupKeyBindings } from "./util/keyBindings";
 
 ReactDOM.render(
     <Provider store={store}>
@@ -25,3 +26,4 @@ const date = new Date();
 date.setDate(date.getDate() - 3);
 store.dispatch(changeMapDate(date));
 loadLayers(store);
+setupKeyBindings(store);
