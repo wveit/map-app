@@ -10,14 +10,15 @@ export default function DateUnitChooser(props) {
             <div
                 className={
                     "DateUnitChooser__unit" +
-                    (props.unit === "year"
+                    (props.unit === "day"
                         ? " DateUnitChooser__active"
                         : " DateUnitChooser__inactive")
                 }
-                onClick={() => handleClick("year")}
+                onClick={() => handleClick("day")}
             >
-                Year
+                Day
             </div>
+
             <div
                 className={
                     "DateUnitChooser__unit" +
@@ -29,16 +30,17 @@ export default function DateUnitChooser(props) {
             >
                 Month
             </div>
+
             <div
                 className={
                     "DateUnitChooser__unit" +
-                    (props.unit === "day"
+                    (props.unit === "year"
                         ? " DateUnitChooser__active"
                         : " DateUnitChooser__inactive")
                 }
-                onClick={() => handleClick("day")}
+                onClick={() => handleClick("year")}
             >
-                Day
+                Year
             </div>
         </div>
     );
