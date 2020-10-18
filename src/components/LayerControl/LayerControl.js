@@ -33,8 +33,8 @@ function LayerControlTop(props) {
     }
 
     return (
-        <div className="LayerControl__top left-right-container">
-            <div className="left">
+        <div className="LayerControl__top LayerControl__left-right-container">
+            <div className="LayerControl__left">
                 <Switch
                     readOnly
                     checked={props.layer.isVisible}
@@ -51,7 +51,7 @@ function LayerControlTop(props) {
                     </div>
                 </div>
             </div>
-            <div className={`right`} onClick={handleRemoveClick}>
+            <div className={`LayerControl__right`} onClick={handleRemoveClick}>
                 {closeButton}
             </div>
         </div>
@@ -66,12 +66,12 @@ function LayerControlBottom(props) {
     if (!props.layer.isVisible) return null;
 
     return (
-        <div className="LayerControl__bottom left-right-container">
-            <div className="left">
+        <div className="LayerControl__bottom LayerControl__left-right-container">
+            <div className="LayerControl__left">
                 <Colorbar />
             </div>
 
-            <div className="right">
+            <div className="LayerControl__right">
                 <IconButton>more_vert</IconButton>
                 <IconButton>layers</IconButton>
                 <OpacityControl {...props} />

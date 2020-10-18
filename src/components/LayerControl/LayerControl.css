@@ -31,3 +31,25 @@
     padding: 5px;
     border: 1px solid gray;
 }
+
+.LayerControl__left {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.LayerControl__right {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.LayerControl__left-right-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.LayerControl__invisible {
+    display: none;
+}
