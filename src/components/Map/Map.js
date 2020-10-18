@@ -1,25 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { Map, View } from "ol";
+import { Map as OlMap, View as OlView } from "ol";
 
 import Layer from "./Layer";
 import { updateMouseCoordinates } from "../../actions/coordinates";
 import { pointIsInsideBox } from "./util";
 
 const LAYER_EXTENT = [-360, -90, 360, 90];
+const VIEW_EXTENT = [-1000, -400, 1000, 400];
 
-class MyMap extends React.Component {
+class Map extends React.Component {
     constructor(props) {
         super(props);
-        this.map = new Map({
+        this.map = new OlMap({
             layers: [],
             controls: [],
-            view: new View({
+            view: new OlView({
                 projection: "EPSG:4326",
                 center: [0, 0],
                 zoom: 3,
-                extent: [-1000, -400, 1000, 400],
+                extent: VIEW_EXTENT,
             }),
         });
         this.mapRef = React.createRef(null);
@@ -93,4 +94,4 @@ const mapDispatchToProps = {
     onCoordinateChange: updateMouseCoordinates,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyMap);
+export default connect(mapStateToProps, mapDispatchToProps)(Map);
