@@ -1,9 +1,9 @@
 import React from "react";
 
-import MapContainer from "../Map/MapContainer";
-import MenuContainer from "../Menu/MenuContainer";
-import Coordinates from "../Coordinates/Coordinates";
-import ModalContainer from "../Modal/ModalContainer";
+import MapContainer from "../MapContainer/MapContainer";
+import MenuContainer from "../MenuContainer/MenuContainer";
+import Coordinates from "../CoordinatesContainer/CoordinatesContainer";
+import ModalContainer from "../ModalContainer/ModalContainer";
 import DateContainer from "../DateContainer/DateContainer";
 
 export default function App(props) {

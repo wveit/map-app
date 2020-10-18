@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { closeModal } from "../../actions/modals";
 import "./ModalContainer.css";
-import SettingsModal from "./SettingsModal";
-import ShareModal from "./ShareModal";
-import HelpModal from "./HelpModal";
-import AddLayerMenuContainer from "../AddLayerMenu/AddLayerMenuContainer";
+import SettingsModal from "../../components/Modal/SettingsModal";
+import ShareModal from "../../components/Modal/ShareModal";
+import HelpModal from "../../components/Modal/HelpModal";
+import AddLayerMenuContainer from "../../containers/AddLayerMenuContainer/AddLayerMenuContainer";
 
 function ModalContainer(props) {
     if (!props.currentModal) {

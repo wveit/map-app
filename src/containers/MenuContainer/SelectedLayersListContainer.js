@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import SelectedLayersList from "./SelectedLayersList";
+import SelectedLayersList from "../../components/SelectedLayersList/SelectedLayersList";
 import {
     toggleLayerVisibility,
     adjustLayerOpacity,

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./Coordinates.css";
+import "./CoordinatesContainer.css";
 
 function Coordinates(props) {
     let coordinateString = "--";

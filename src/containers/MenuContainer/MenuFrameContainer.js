@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import MenuFrame from "./MenuFrame";
+import MenuFrame from "../../components/MenuFrame/MenuFrame";
 import { openModal } from "../../actions/modals";
 
 const mapDispatchToProps = {

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { updateMouseCoordinates } from "../../actions/coordinates";
-import Map from "./Map";
-import "./Map.css";
+import Map from "../../components/Map/Map";
+import "../../components/Map/Map.css";
 
 function mapStateToProps({ selectedLayers, layerData, dates }) {
     return {

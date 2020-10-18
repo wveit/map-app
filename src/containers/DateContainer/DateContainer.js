@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { changeMapDate, changeDateSliderUnit } from "../../actions/dates";
-import DatePicker from "../DatePicker/DatePicker";
-import "../DatePicker/DatePicker.css";
-import DateSlider from "../DateSlider/DateSlider";
-import "../DateSlider/DateSlider.css";
-import DateUnitChooser from "../DateUnitChooser/DateUnitChooser";
-import "../DateUnitChooser/DateUnitChooser.css";
+import DatePicker from "../../components/DatePicker/DatePicker";
+import "../../components/DatePicker/DatePicker.css";
+import DateSlider from "../../components/DateSlider/DateSlider";
+import "../../components/DateSlider/DateSlider.css";
+import DateUnitChooser from "../../components/DateUnitChooser/DateUnitChooser";
+import "../../components/DateUnitChooser/DateUnitChooser.css";
 import "./DateContainer.css";
 
 function DateContainer(props) {

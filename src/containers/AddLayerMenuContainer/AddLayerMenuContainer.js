@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { setLayerActive } from "../../actions/layerData";
-import AddLayerMenu from "./AddLayerMenu";
+import AddLayerMenu from "../../components/AddLayerMenu/AddLayerMenu";
 
 const mapDispatchToProps = {
     setLayerActive,
