@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { createGibsLayer, dateFormat } from "./util";
 
 class Layer extends React.Component {
@@ -12,7 +13,6 @@ class Layer extends React.Component {
     }
 
     componentDidMount() {
-        console.log("layer: ", this.props.layer);
         this.layer = createGibsLayer(
             this.props.layer,
             this.props.mapDate,
@@ -41,5 +41,12 @@ class Layer extends React.Component {
         this.props.map.removeLayer(this.layer);
     }
 }
+
+Layer.propTypes = {
+    map: PropTypes.object.isRequired,
+    layer: PropTypes.object.isRequired,
+    zIndex: PropTypes.number.isRequired,
+    mapDate: PropTypes.instanceOf(Date),
+};
 
 export default Layer;

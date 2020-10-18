@@ -1,10 +1,7 @@
 import React from "react";
-import { connect } from "react-redux";
-
+import PropTypes from "prop-types";
 import { Map as OlMap, View as OlView } from "ol";
-
 import Layer from "./Layer";
-import { updateMouseCoordinates } from "../../actions/coordinates";
 import { pointIsInsideBox } from "./util";
 
 const LAYER_EXTENT = [-360, -90, 360, 90];
@@ -77,21 +74,20 @@ class Map extends React.Component {
         };
     }
 
-    componentDidUpdate() {}
-
-    componentWillUnmount() {}
+    componentWillUnmount() {
+        this.map.setTarget(null);
+        this.map = null;
+    }
 }
 
-function mapStateToProps({ selectedLayers, layerData, dates }) {
-    return {
-        selectedLayers,
-        layerData,
-        mapDate: dates.mapDate,
-    };
-}
-
-const mapDispatchToProps = {
-    onCoordinateChange: updateMouseCoordinates,
+Map.propTypes = {
+    selectedLayers: PropTypes.array.isRequired,
+    layerData: PropTypes.object.isRequired,
+    onCoordinateChange: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+Map.defaultProps = {
+    onCoordinateChange: () => {},
+};
+
+export default Map;
