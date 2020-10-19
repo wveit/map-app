@@ -1,4 +1,39 @@
-.Colorbar img {
-    width: 250px;
-    height: 30px;
+.Colorbar {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 5px;
+    font-size: 14px;
+    font-family: monospace;
+}
+
+.Colorbar__colordisplay {
+    display: flex;
+    align-items: center;
+}
+
+.Colorbar__colorcircle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.Colorbar__colorbar.Colorbar__emptycolorbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: lightgray;
+    color: rgb(108, 108, 108);
+    font-size: 10px;
+}
+
+.Colorbar__colorbar {
+    height: 12px;
+    display: flex;
+    cursor: crosshair;
+}
+
+.Colorbar__labels {
+    display: flex;
+    justify-content: space-between;
 }
