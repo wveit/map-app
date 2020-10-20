@@ -18,8 +18,11 @@ export default {
 export const Empty = () => <ColorbarWrapper />;
 export const EmptyWithWidth = () => <ColorbarWrapper width={400} />;
 export const Basic = () => (
+    <ColorbarWrapper min={0} max={colorTable.length} colorTable={colorTable} />
+);
+export const Basic400 = () => (
     <ColorbarWrapper
-        width={255}
+        width={400}
         min={0}
         max={colorTable.length}
         colorTable={colorTable}
@@ -33,10 +36,21 @@ export const FullPaletteRgb = () => (
         colorTable={samples.SSHA}
     />
 );
+export const FullPaletteRgb400 = () => (
+    <ColorbarWrapper
+        width={400}
+        min={"-0.3"}
+        max={"0.3"}
+        colorTable={samples.SSHA}
+    />
+);
 
 export const FullPaletteHex = () => (
+    <ColorbarWrapper min={"-0.3"} max={"0.3"} colorTable={samples.GIBS_SST} />
+);
+export const FullPaletteHex400 = () => (
     <ColorbarWrapper
-        width={500}
+        width={400}
         min={"-0.3"}
         max={"0.3"}
         colorTable={samples.GIBS_SST}

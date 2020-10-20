@@ -42,17 +42,28 @@ function Colorbar(props) {
 
     const numColors = props.colorTable.length;
     const widthPerColor = Math.floor(props.width / numColors);
+    const numExtraPixelsNeeded = props.width - numColors * widthPerColor;
+    const desiredExtraPixelRatio = numExtraPixelsNeeded / numColors;
+    let numExtraPixelsAssigned = 0;
+    let numColorsAssigned = 0;
     console.log("numColors: ", numColors);
     const colors = props.colorTable.map((color, index) => {
         function handleColorHover() {
             handleHover(index);
+        }
+        numColorsAssigned++;
+        const extraPixelRatio = numExtraPixelsAssigned / numColorsAssigned;
+        let width = widthPerColor;
+        if (extraPixelRatio < desiredExtraPixelRatio) {
+            width++;
+            numExtraPixelsAssigned++;
         }
         return (
             <div
                 className="Colorbar__color"
                 key={index}
                 style={{
-                    width: widthPerColor,
+                    width: width,
                     backgroundColor: colorFunction(color[1]),
                 }}
                 onMouseMove={handleColorHover}
