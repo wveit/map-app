@@ -2,6 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Colorbar.css";
 
+function rgb(rgbStr) {
+    return `rgb(${rgbStr})`;
+}
+
+function hex(hexStr) {
+    return `#${hexStr}`;
+}
+
+function getColorFunction(colorTable) {
+    if (colorTable[0][1].includes(",")) return rgb;
+    else return hex;
+}
+
 function EmptyColorbar(props) {
     return (
         <div
@@ -25,6 +38,8 @@ function Colorbar(props) {
         props.onHover && props.onHover(null);
     }
 
+    const colorFunction = getColorFunction(props.colorTable);
+
     const numColors = props.colorTable.length;
     const widthPerColor = Math.floor(props.width / numColors);
     console.log("numColors: ", numColors);
@@ -38,7 +53,7 @@ function Colorbar(props) {
                 key={index}
                 style={{
                     width: widthPerColor,
-                    backgroundColor: `rgb(${color[1]})`,
+                    backgroundColor: colorFunction(color[1]),
                 }}
                 onMouseMove={handleColorHover}
             ></div>
@@ -57,12 +72,15 @@ function ColorbarWrapper(props) {
     let display = "";
     let colorCircle = null;
     if (hoverIndex !== null) {
+        const colorFunction = getColorFunction(props.colorTable);
         display = props.colorTable[hoverIndex][0];
         colorCircle = (
             <div
                 className="Colorbar__colorcircle"
                 style={{
-                    backgroundColor: `rgb(${props.colorTable[hoverIndex][1]})`,
+                    backgroundColor: colorFunction(
+                        props.colorTable[hoverIndex][1]
+                    ),
                 }}
             />
         );

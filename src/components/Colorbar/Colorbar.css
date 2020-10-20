@@ -1,6 +1,7 @@
 .Colorbar {
     display: inline-flex;
     flex-direction: column;
+    /* align-items: center; */
     padding: 5px;
     font-size: 14px;
     font-family: monospace;
@@ -9,6 +10,7 @@
 .Colorbar__colordisplay {
     display: flex;
     align-items: center;
+    padding: 0 20px;
 }
 
 .Colorbar__colorcircle {
@@ -31,9 +33,12 @@
     height: 12px;
     display: flex;
     cursor: crosshair;
+    flex-grow: 1;
+    justify-content: center;
 }
 
 .Colorbar__labels {
     display: flex;
     justify-content: space-between;
+    flex-grow: 1;
 }
