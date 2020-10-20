@@ -17,7 +17,8 @@
             "imagery": {
                 "type": "GIBS_WMTS",
                 "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"
-            }
+            },
+            "colorTable": "SST"
         },
         {
             "id": "MODIS_Terra_L3_SST_Thermal_4km_Night_Daily",
@@ -26,7 +27,8 @@
             "imagery": {
                 "type": "GIBS_WMTS",
                 "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"
-            }
+            },
+            "colorTable": "SST"
         },
         {
             "id": "GHRSST_L4_MUR_Sea_Surface_Temperature",
@@ -37,7 +39,8 @@
             "imagery": {
                 "type": "GIBS_WMTS",
                 "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"
-            }
+            },
+            "colorTable": "SST"
         },
         {
             "id": "GHRSST_L4_MUR_Sea_Surface_Temperature_Anomalies",
@@ -64,7 +67,8 @@
             "imagery": {
                 "type": "GIBS_WMTS",
                 "capabilities": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml"
-            }
+            },
+            "colorTable": "SSHA"
         },
         {
             "id": "MODIS_Aqua_Chlorophyll_A",

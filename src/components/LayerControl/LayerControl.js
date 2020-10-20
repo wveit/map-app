@@ -4,6 +4,7 @@ import Popper from "@material-ui/core/Popper";
 import IconButton from "../Button/IconButton";
 import "./LayerControl.css";
 import Colorbar from "../Colorbar/Colorbar";
+import colorTables from "../../util/colorTables";
 
 export default function LayerControl(props) {
     function handleRemoveClick(layerId) {
@@ -64,12 +65,23 @@ function LayerControlBottom(props) {
     }
 
     if (!props.layer.isVisible) return null;
+    let colorTableComponent;
+    if (props.layer.colorTable) {
+        const colorTable = colorTables[props.layer.colorTable];
+        colorTableComponent = (
+            <Colorbar
+                colorTable={colorTable.colorTable}
+                min={colorTable.min}
+                max={colorTable.max}
+            />
+        );
+    } else {
+        colorTableComponent = <Colorbar />;
+    }
 
     return (
         <div className="LayerControl__bottom LayerControl__left-right-container">
-            <div className="LayerControl__left">
-                <Colorbar />
-            </div>
+            <div className="LayerControl__left">{colorTableComponent}</div>
 
             <div className="LayerControl__right">
                 <IconButton>more_vert</IconButton>

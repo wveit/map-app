@@ -46,7 +46,6 @@ function Colorbar(props) {
     const desiredExtraPixelRatio = numExtraPixelsNeeded / numColors;
     let numExtraPixelsAssigned = 0;
     let numColorsAssigned = 0;
-    console.log("numColors: ", numColors);
     const colors = props.colorTable.map((color, index) => {
         function handleColorHover() {
             handleHover(index);

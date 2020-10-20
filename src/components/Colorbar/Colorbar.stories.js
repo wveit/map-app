@@ -2,8 +2,6 @@ import React from "react";
 import ColorbarWrapper from "./Colorbar";
 import samples from "./sample-palettes";
 
-console.log("SSHA: ", samples.SSHA);
-
 const colorTable = [
     ["0 to 1", "255,0,0"],
     ["1 to 2", "0,255,0"],
@@ -55,10 +53,4 @@ export const FullPaletteHex400 = () => (
         max={"0.3"}
         colorTable={samples.GIBS_SST}
     />
-);
-
-export const Practice = () => (
-    <div>
-        <ColorbarWrapper />
-    </div>
 );

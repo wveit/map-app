@@ -22,8 +22,13 @@ ReactDOM.render(
 //
 ////////////////////////////////////////////////////////////////
 
+// Set starting date
 const date = new Date();
 date.setDate(date.getDate() - 3);
 store.dispatch(changeMapDate(date));
+
+// Load layers from config
 loadLayers(store);
+
+// Set up key bindings
 setupKeyBindings(store);

@@ -70,6 +70,15 @@ export function createGibsLayer(layerData, date, extent, zIndex) {
         }),
     });
 
+    let lastFailedUrl = "";
+    source.on("tileloaderror", function (event) {
+        if (event.url !== lastFailedUrl) {
+            console.log("Error loading tile (attempting tile reload): ", event);
+            event.tile.load();
+            lastFailedUrl = event.url;
+        }
+    });
+
     const layer = new OlLayer({
         source,
         extent,
